@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/defaultTitleStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/btn_MainMenu_Psam"
+            android:textColor="#666666"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/psam_atr" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/tb_COM_Recv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:minLines="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_Psam_PowerOn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="PowerOn"
+            android:text="@string/psam_poweron" />
+    </LinearLayout>
+
+    <!-- Apdu -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/psam_apdu" />
+
+        <EditText
+            android:id="@+id/tb_Psam_Apdu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:minLines="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/psam_rpdu" />
+
+        <EditText
+            android:id="@+id/tb_Psam_Response"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:minLines="4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_Psam_send"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Send"
+            android:text="@string/psam_send" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_Write_Back"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Back"
+            android:text="@string/btn_Back" />
+    </LinearLayout>
+
+</LinearLayout>

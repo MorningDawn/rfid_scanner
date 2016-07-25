@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/hf_mifare.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_mifare.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_configration.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_configration.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/hf_iso14443a.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_iso14443a.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/spinner_item.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/spinner_item.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/activity_detail_history.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_detail_history.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/activity_download.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_download.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/dialog_deksripsi.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dialog_deksripsi.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/hf_iso15693.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_iso15693.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/epclist_item_new.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/epclist_item_new.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_read_stok.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_read_stok.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_wirte.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_wirte.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/hf_main.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_main.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_dialog.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_dialog.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_read_matching.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_read_matching.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/epclist_item.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/epclist_item.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/psam_main.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/psam_main.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_read.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_read.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/scan_main.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/scan_main.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/activity_history.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_history.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/dlt_meter_op.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dlt_meter_op.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/dlt_main.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dlt_main.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/dlt_free_send.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dlt_free_send.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/history_list.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/history_list.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/item_main.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/item_main.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_main.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_main.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/layout/activity_stok_opname.xml",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_stok_opname.xml"
+    }
+]

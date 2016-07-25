@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.clouiotech.pda.demoExample"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CAMERA" >
+    </uses-permission>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.clouiotech.pda.demo.uhf.UHFMain" >
+
+            <!--
+            <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.ItemMainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.ReadEPCActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.StokOpnameActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.StokReadEPCActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.DownloadActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.DetailHistoryActivity" />
+        <activity android:name="com.clouiotech.pda.demo.uhf.HistoryActivity" />
+        <activity android:name="com.clouiotech.pda.demo.uhf.WriteEPCActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.LockEPCActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.ConfigActivity" >
+
+            <!--
+            <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+               <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.hf.HFMain" >
+
+            <!--
+            <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+               <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.hf.ReadISO15693Activity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.hf.ReadISO14443Activity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.hf.ReadMifareActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.UpdateBase" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.Test_PowerUpDownActivity" >
+
+            <!--
+            <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.scanner.ScannerActivity" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.psam.PsamTestActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.scanner.SDLguiActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.uhf.ReadEPCmatchingActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.dlt.Free433Sendctivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.dlt.MenuActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.dlt.MeterReadActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.dlt.MeterSettingActivity" >
+        </activity>
+    </application>
+
+</manifest>

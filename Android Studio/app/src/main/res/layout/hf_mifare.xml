@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Mifare标题 -->
+
+    <LinearLayout
+        style="@style/defaultTitleStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Mifare"
+            android:textColor="#666666"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <!-- 读标签序列号 -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读标签序列号:" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.4"
+            android:text="请求模式:" />
+
+        <Spinner
+            android:id="@+id/sp_mifare_Model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:entries="@array/Array_iso14443a_Model"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UID:" />
+
+        <EditText
+            android:id="@+id/tb_mifare_Uid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="0dp"
+        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_mifare_UID"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ReadmifareUID"
+            android:text="@string/btn_Read_UID" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:text="读/写/块值操作:" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.2"
+            android:text="位置:" />
+
+        <Spinner
+            android:id="@+id/sp_mifare_Type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:entries="@array/Array_mifareType"
+             />
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.2"
+            android:text="块号:" />
+        <Spinner
+            android:id="@+id/sp_mifare_Block"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:entries="@array/Array_Block"
+            />
+        
+       
+        
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.2"
+            android:text="认证:" />
+
+        <Spinner
+            android:id="@+id/sp_mifare_CompareType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:entries="@array/Array_CompareType"
+             />
+        
+        
+        <TextView
+           android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.2"
+            android:text="类别:" />
+
+        <Spinner
+            android:id="@+id/sp_mifare_KeyType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:entries="@array/Array_KeyType"
+             />
+        
+    </LinearLayout>
+    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        
+         <TextView
+           android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.2"
+            android:text="块值:" />
+
+        <Spinner
+            android:id="@+id/sp_mifare_Mode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:entries="@array/Array_Mode"
+             />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.4"
+            android:text="传输块号:" />
+
+        <Spinner
+            android:id="@+id/sp_mifare_TransBlock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:entries="@array/Array_Block"
+             />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密钥:" />
+
+        <EditText
+            android:id="@+id/tb_mifare_key"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|top"
+            android:hint="FFFFFFFFFFFF"
+            android:inputType="textMultiLine"
+            android:maxLines="1"
+            android:minLines="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据:" />
+
+        <EditText
+            android:id="@+id/tb_mifare_Data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:minLines="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="0dp"
+        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_mifare_read"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:onClick="mifareRead"
+            android:text="读" />
+
+        <Button
+            android:id="@+id/btn_mifare_write"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:onClick="mifareWrite"
+            android:text="写" />
+
+        <Button
+            android:id="@+id/btn_mifare_BlockValue"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mifareBlockValue"
+            android:text="块值" />
+    </LinearLayout>
+    
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="1px" 
+	   android:background="?android:attr/listDivider" /> 
+	   
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="48dp"
+    	android:orientation="horizontal"
+    	android:layout_marginBottom="0dp"
+    	 
+    	>
+        <Button 
+        android:id="@+id/btn_mifare_Back" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:onClick="Back" />
+     </LinearLayout>
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="1px" 
+	   android:background="?android:attr/listDivider" /> 
+
+</LinearLayout>

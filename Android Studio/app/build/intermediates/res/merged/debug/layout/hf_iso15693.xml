@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        style="@style/defaultTitleStyle">
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textColor="#666666"
+	        android:text="ISO15693" />
+	</LinearLayout>
+	<TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="读标签序列号:"
+    />
+	<LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="48dp"
+    	android:orientation="horizontal">
+	    <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="UID:"
+          />
+		<EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:id="@+id/tb_Access_Uid"
+          />
+     </LinearLayout>
+     
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:orientation="horizontal"
+    	android:layout_marginBottom="0dp"
+    	>
+        <Button 
+        android:id="@+id/btn_Read_UID" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_Read_UID"
+        android:onClick="ReadUID" />
+     </LinearLayout>
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="1px" 
+	   android:background="?android:attr/listDivider" /> 
+	
+	<TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="读/写/锁:"
+         
+    />
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	>
+	    <TextView
+         android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.4"
+         android:text="@string/LabelBlockNoText"
+          />
+        <Spinner
+           android:id="@+id/sp_Write_Block"
+           android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+           android:entries="@array/Array_Block"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4" />
+        <!--<EditText
+        style="@style/TextBoxStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:id="@+id/tb_Read_data"
+        android:hint="00000000" />-->
+    </LinearLayout>
+    <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	 >
+	    <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="数据:"
+          />
+		<EditText
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:id="@+id/tb_iso15693_WriteData"
+        android:inputType="textMultiLine"
+        android:gravity="left|top"
+        android:minLines="2"
+        android:maxLines="2"
+		android:hint="00000000" />
+     </LinearLayout>
+    
+    <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:orientation="horizontal"
+    	android:layout_marginBottom="0dp"
+    	>
+        <Button 
+        android:id="@+id/btn_iso15693_Read" 
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="读"
+        android:onClick="Read" />
+        <Button 
+        android:id="@+id/btn_iso15693_Write" 
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="写"
+        android:onClick="Write" />
+        <Button 
+        android:id="@+id/btn_iso15693_info" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="获取标签信息"
+        android:onClick="GetInfo" />
+     </LinearLayout>
+     
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="5px" 
+	   android:background="?android:attr/listDivider" /> 
+	   
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:orientation="horizontal"
+    	android:layout_marginBottom="0dp"
+    	>
+	    <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="AFI:"
+          />
+		<EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        
+        android:id="@+id/tb_iso15693_AFI"
+        android:hint="01"
+          />
+		<Button 
+        android:id="@+id/btn_iso15693_writeAFI" 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="写AFI"
+        android:onClick="writeAFI" />
+        <Button 
+        android:id="@+id/btn_iso15693_lockAFI" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="锁AFI"
+        android:onClick="lockAFI" />
+     </LinearLayout>
+     
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="1px" 
+	   android:background="?android:attr/listDivider" /> 
+	   
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:orientation="horizontal"
+    	android:layout_marginBottom="0dp"
+    	>
+	    <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="DSFID:"
+          />
+		<EditText
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        
+        android:id="@+id/tb_iso15693_DSFID"
+        android:hint="01"
+          />
+		<Button 
+        android:id="@+id/btn_iso15693_writeDSFID" 
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:text="写DSFID"
+        android:onClick="writeDSFID" />
+        <Button 
+        android:id="@+id/btn_iso15693_lockDSFID" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="锁DSFID"
+        android:onClick="lockDSFID" />
+     </LinearLayout>
+     
+     
+
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="1px" 
+	   android:background="?android:attr/listDivider" /> 
+	   
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:orientation="horizontal"
+    	android:layout_marginBottom="0dp"
+    	 
+    	>
+        <Button 
+        android:id="@+id/btn_iso5693_Back" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:onClick="Back" />
+     </LinearLayout>
+     <View  
+	   android:layout_width="fill_parent"  
+	   android:layout_height="1px" 
+	   android:background="?android:attr/listDivider" /> 
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:baselineAligned="false"
+    style="@style/AppTheme">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        style="@style/defaultTitleStyle">
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textColor="#666666"
+	        android:text="@string/STR_FREE_SEND" />
+	    
+	</LinearLayout>
+    <Button 
+         android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/BTN_METER_READ"
+        android:text="@string/STR_METER_READ"
+        
+        android:onClick="onMeterRead" />
+	<Button 
+	     android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/BTN_METER_SETTING"
+        android:text="@string/STR_METER_SETTING"
+        
+        android:onClick="onMeterSetting" />
+	<Button 
+	    android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/BTN_FREE_SEND"
+        android:text="@string/STR_FREE_SEND"
+        
+        android:onClick="onFreeSend" />
+        
+	<Button 
+	     android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/btn_HFMenu_Exit"
+        android:text="@string/btn_HFMenu_Back"   
+        
+        android:onClick="onBack" />
+</LinearLayout>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/drawable/ic_silang.png",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/ic_silang.png"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/drawable/bg_title.png",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/bg_title.png"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/drawable/ic_launcher.png",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/ic_launcher.png"
+    },
+    {
+        "merged": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/intermediates/res/merged/debug/drawable/background.png",
+        "source": "/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/background.png"
+    }
+]

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- ISO14443A标题 -->
+
+    <LinearLayout
+        style="@style/defaultTitleStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ISO14443A"
+            android:textColor="#666666"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <!-- 读标签序列号 -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读标签序列号:" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.4"
+            android:text="请求模式:" />
+
+        <Spinner
+            android:id="@+id/sp_iso14443a_Model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:entries="@array/Array_iso14443a_Model"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UID:" />
+
+        <EditText
+            android:id="@+id/tb_iso14443a_Uid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="0dp"
+        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_iso14443a_Uid"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:onClick="ReadISO4443A"
+            android:text="扫描标签" />
+
+        <Button
+            android:id="@+id/btn_iso14443a_Halt"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:onClick="HaltISO14443A"
+            android:text="卡挂起" />
+
+        <Button
+            android:id="@+id/btn_iso14443a_Reset"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ResetISO14443A"
+            android:text="卡复位" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider" />
+
+    <!-- ISO14443A-4卡操作 -->
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:text="ISO14443A-4卡操作:" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+           android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="0.4"
+            android:text="卡标识符:" />
+
+        <Spinner
+            android:id="@+id/sp_iso14443a_Block"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:entries="@array/Array_Block"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="应答:" />
+
+        <EditText
+            android:id="@+id/tb_iso14443a_Data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:minLines="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="0dp"
+        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_ReadIso14443a_RATS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ReadIso14443aRATS"
+            android:text="RATS命令" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APDU:" />
+
+        <EditText
+            android:id="@+id/tb_iso14443a_apdu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            android:gravity="left|top"
+            android:hint="00 84 00 00 08"
+            android:inputType="textMultiLine"
+            android:maxLines="1"
+            android:minLines="1" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="0dp"
+        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_iso14443a_apdu"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:onClick="APDU"
+            android:text="APDU" />
+
+        <Button
+            android:id="@+id/btn_iso14443a_deselect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Deselect"
+            android:text="Deselect" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="0dp"
+        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_iso14443a_Back"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Back"
+            android:text="Back" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="?android:attr/listDivider" />
+
+</LinearLayout>

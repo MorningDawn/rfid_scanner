@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/LayoutMain"
+        style="@style/defaultTitleStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/tv_MainMenu_Title"
+            android:textColor="#666666"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_Item_Main_UHF"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="OpenUHFDemo"
+        android:text="@string/btn_MainMenu_UHF"
+        android:textSize="22sp" />
+
+    <requestFocus />
+
+    <Button
+        android:id="@+id/btn_Item_Main_Psam"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="OpenPsamDemo"
+        android:text="@string/btn_MainMenu_Psam"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_Item_Main_Scanner"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="OpenScannerDemo"
+        android:text="@string/btn_MainMenu_Scan"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_Item_Main_DLT"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="openDLTDemo"
+        android:text="@string/btn_MainMenu_DLT"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_Item_Main_Version"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="GetVersion"
+        android:text="@string/btn_MainMenu_Version"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_Item_Main_SerialNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="GetSerialNumber"
+        android:text="@string/btn_MainMenu_SerialNumber"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_Item_Main_Exit"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:onClick="Exit"
+        android:text="@string/btn_MainMenu_Exit"
+        android:textSize="22sp" />
+
+</LinearLayout>

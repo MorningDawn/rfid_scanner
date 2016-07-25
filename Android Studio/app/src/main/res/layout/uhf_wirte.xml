@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/defaultTitleStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/tv_Write_Title"
+            android:textColor="#666666"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <!-- 匹配数据区 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_Write_MatchTitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_Write_MatchTID" />
+
+        <EditText
+            android:id="@+id/tb_Write_MatchTID"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:minLines="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_Write_AccessPassword" />
+
+        <EditText
+            android:id="@+id/tb_Access_Password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/uhf_default_access_pwd" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_Write_ReadMacthTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ReadMactchTag"
+            android:text="@string/btn_Write_ReadMatch" />
+    </LinearLayout>
+
+    <!-- 写数据区 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_Write_WriteTitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="@string/tv_Write_WriteType" />
+
+        <Spinner
+            android:id="@+id/sp_Write_WriteType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:entries="@array/Array_WriteType"
+            android:prompt="@string/Clear_Tags" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_Write_WriteData" />
+
+        <EditText
+            android:id="@+id/tb_Write_WriteData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:minLines="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_Write_WriteData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="WirteData"
+            android:text="@string/btn_Write_WriteData" />
+
+        <Button
+            android:id="@+id/btn_Write_Back"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Back"
+            android:text="@string/btn_Back" />
+    </LinearLayout>
+
+</LinearLayout>

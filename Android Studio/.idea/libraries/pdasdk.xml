@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pdasdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/pdasdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

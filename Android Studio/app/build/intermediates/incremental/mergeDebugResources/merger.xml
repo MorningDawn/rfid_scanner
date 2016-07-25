@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res"/><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/generated/res/rs/debug"/><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/generated/res/resValues/debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/debug/res"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res"><file name="ic_launcher" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable-xhdpi/ic_launcher.png" qualifiers="xhdpi-v4" type="drawable"/><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values-v14/styles.xml" qualifiers="v14"><style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- API 14 theme customizations can go here. -->
+    </style></file><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values-zh-rCN/strings.xml" qualifiers="zh-rCN"><string name="btn_MainMenu_Psam">PSAM卡</string><string name="PowerFaild">打开电源失败! 请确认模块已连接！</string><string name="DefaultMeterPasswd">00000000</string><string name="uhf_6b_not_support_match_mode">6B标签不支持匹配读!</string><string name="tv_Write_MatchTID">TID:</string><string name="tv_Write_MatchTitle">匹配参数:</string><string name="write_success">成功！</string><string name="MeterReadItemVolt">电压</string><string name="uhf_default_access_pwd">00000000</string><string name="List_ReadCount">次数</string><string name="btn_Read_UID">扫描标签</string><string name="psam_please_check_card">请确认已插卡!</string><string name="btn_UHFMenu_Write">写标签</string><string name="setting_waiting">正在设置电表,请稍等…</string><string name="tv_HF_Title">高频示例</string><string name="btn_MainMenu_HF">高频</string><string name="MeterSpeed1200">1200</string><string name="MeterReadItemAmpC">电流(C)</string><string name="MeterReadItemAmpB">电流(B)</string><string name="MeterReadItemAmpA">电流(A)</string><string name="ButtonWriteText">写</string><string name="please_input_valid_passwd">请输入有效的密码！</string><string name="btn_read_1_matching">停止</string><string name="tv_Read_Title_matching">匹配读</string><string name="setting_faild">设置失败， 请重试！</string><string name="btn_MainMenu_UHF">超高频</string><string name="ButtonReadText">读</string><string name="tv_Write_WriteType">类型:</string><string name="MeterPortIRDA">红外口</string><string name="btn_read_stop">停止</string><string name="MeterSettingItemAddress">通信地址</string><string name="btn_MainMenu_Version">版本</string><string name="com_recv">接收区：</string><string name="txtBlockNoDefult">1</string><string name="MeterPortRS485">RS485</string><string name="MeterSpeed2400">2400</string><string name="MeterSettingItemMeterNo">表号</string><string name="btn_MainMenu_Scan">条码</string><string name="GetAddrByF1">按F1键获取表地址</string><string name="text_com_parity">校验:</string><string name="tv_Read_Title">读EPC</string><string name="Clear_Tags_matching">清空</string><string name="str_busy">忙!</string><string name="please_select_valid_item">请选择正确的项目!</string><string name="MeterReadItemPower">电量</string><string name="STR_FREE_SEND">自由收发</string><string name="str_ok">确定</string><string name="STR_METER_READ">数据读取</string><string name="tv_Write_WriteTitle">写数据:</string><string name="SettingMeter">设置</string><string name="btn_Back_matching">返回</string><string name="psam_rpdu">RPDU:</string><string name="LabelDataAreaText">数据域：</string><string name="waiting">请稍等…</string><string name="setting_result">设置结果</string><string name="MeterProtocol07">DLT645_2007</string><string name="scanner_open_power_faild">打开电源失败!</string><string name="read_waiting">正在读取, 请稍等.…</string><string name="btn_UHFMenu_Back">返回</string><string name="read_success">成功！</string><string name="Exit">退出</string><string name="tv_Configration_TagType">标签类型:</string><string name="List_ReadCount_matching">Count</string><string name="MeterReadItemLastMonth">月数据</string><string name="Tag_Time">Time:0 S </string><string name="btn_UHFMenu_Configration">配置</string><string name="LabelKeyText">密码:</string><string name="str_btn_com_close">关闭</string><string name="LabelBlockNoText">块号:</string><string name="please_input_valid_value">请输入有效的写表数据！</string><string name="List_TagID">EPC</string><string name="tv_Write_AccessPassword">访问密码:</string><string name="Tag_Count_matching">Total:0</string><string name="MeterReadItemProgNum">编程次数</string><string name="btn_HFMenu_ISO14443A">ISO14443A</string><string name="please_input_valid_data">请输入有效数据！</string><string name="text_com_port">端口:</string><string name="btn_MainMenu_SerialNumber">序列号</string><string name="Tag_ReadTotalCount">SP:0 T/S</string><string name="btn_Write_ReadMatch">读标签</string><string name="tv_Configration_Frequency">频率:</string><string name="txtKeyDefault">FFFFFFFFFFFF</string><string name="str_configure">配置</string><string name="tv_Configration_Power">功率:</string><string name="MeterProtocol97">DLT645_1997</string><string name="btn_Restore">恢复出厂</string><string name="btn_Write_WriteData">写标签</string><string name="MeterSettingItemIRSpeed">红外波特率</string><string name="uhf_please_stop">请先停止读标签!</string><string name="psam_poweron">上电</string><string name="MeterPort">端口: </string><string name="MeterReadItemLastDay">日数据</string><string name="DefaultMeterOpcode">00000000</string><string name="MeterSpeed">通信速度: </string><string name="MeterReadItemLastProgRec">最近一次编程记录</string><string name="MeterSpeed4800">4800</string><string name="tv_Write_Title">写EPC</string><string name="btn_HFMenu_Mifare">Mifare卡</string><string name="write_waiting">正在写入,请稍等.…</string><string name="tv_Configration_QValue">Q值:</string><string name="com_send">发送区：</string><string name="tv_MainMenu_Title">PDA示例程序</string><string name="btn_Get">获取</string><string name="btn_read_matching">开始</string><string name="btn_ReadTime">读时间(ms):</string><string name="MeterReadItemAmp">电流</string><string name="tv_Configration_Ant">天线:</string><string name="setting_success">设置成功！</string><string name="MeterItem">项目: </string><string name="psam_send">发送</string><string name="btn_UHFMenu_Read_Matching">匹配读</string><string name="str_btn_com_open">打开</string><string name="MeterPasswd">密码: </string><string name="Back">返回</string><string name="text_com_speed">速率:</string><string name="MeterAddress">表地址: </string><string name="Tag_ReadTotalCount_matching">SP:0 T/S</string><string name="please_input_valid_opcode">请输入有效的操作者代码！</string><string name="please_input_valid_key">请输入有效密码！</string><string name="Tag_Count">Total:0</string><string name="scanner_trigger">触发</string><string name="MeterProtocol">协议: </string><string name="tv_Write_WriteData">数据:</string><string name="str_cancel">取消</string><string name="TestPower_Stop">停止</string><string name="please_input_valid_addr">请输入有效的表地址！</string><string name="str_loading">加载中.…</string><string name="SendData">发送数据:</string><string name="List_TagID_matching">EPC</string><string name="MeterValue">值: </string><string name="str_success">成功</string><string name="btn_HFMenu_ISO15693">ISO15693</string><string name="tv_Configration_BaseSpeed">基带速率:</string><string name="btn_HFMenu_Back">返回</string><string name="MeterSettingItemDate">年月日星期</string><string name="uhf_low_power_consumption">副电点亮低， 是否切换到主电池?</string><string name="btn_read">开始</string><string name="str_confirm">确认</string><string name="ReadMeter">读表</string><string name="btn_Back">返回</string><string name="read_faild">失败！</string><string name="btn_MainMenu_Exit">退出</string><string name="str_btn_com_send">发送</string><string name="str_faild">失败</string><string name="btn_CARRIER">载波</string><string name="btn_MainMenu_DLT">电力</string><string name="MeterSettingItemTime">时分秒</string><string name="read_result">读表结果</string><string name="write_faild">失败！</string><string name="MeterOpcode">操作者代码: </string><string name="Tag_Time_matching">Time:0 S </string><string name="btn_UpdateBase">UpdateBase</string><string name="str_please_waitting">请稍等.…</string><string name="STR_METER_SETTING">设置读取电表参数</string><string name="MeterReadItemVoltA">电压(A)</string><string name="MeterReadItemVoltC">电压(C)</string><string name="app_name">PDA示例程序</string><string name="uhf_data_error">数据错误!</string><string name="MeterReadItemVoltB">电压(B)</string><string name="btn_UHFMenu_Read">读标签</string><string name="psam_low_power_info">电量低， 请充电!</string><string name="btn_UHFMenu_Title">超高频示例</string><string name="TestPower_Start">开始</string><string name="DefaultMeterAddr">000000000000</string><string name="uhf_low_power_info">电量低,请充电!</string><string name="psam_atr">ATR:</string><string name="Clear_Tags">清空</string><string name="btn_StopTime">停时间(ms): </string><string name="btn_Set">设置</string><string name="psam_apdu">APDU:</string></file><file name="ic_launcher" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/ic_launcher.png" qualifiers="" type="drawable"/><file name="ic_silang" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/ic_silang.png" qualifiers="" type="drawable"/><file name="background" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/background.png" qualifiers="" type="drawable"/><file name="bg_title" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable/bg_title.png" qualifiers="" type="drawable"/><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values-v11/styles.xml" qualifiers="v11"><style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <!-- API 11 theme customizations can go here. -->
+    </style></file><file name="activity_stok_opname" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_stok_opname.xml" qualifiers="" type="layout"/><file name="uhf_dialog" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_dialog.xml" qualifiers="" type="layout"/><file name="dlt_free_send" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dlt_free_send.xml" qualifiers="" type="layout"/><file name="dlt_main" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dlt_main.xml" qualifiers="" type="layout"/><file name="epclist_item" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/epclist_item.xml" qualifiers="" type="layout"/><file name="uhf_wirte" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_wirte.xml" qualifiers="" type="layout"/><file name="uhf_read_stok" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_read_stok.xml" qualifiers="" type="layout"/><file name="dialog_deksripsi" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dialog_deksripsi.xml" qualifiers="" type="layout"/><file name="hf_iso15693" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_iso15693.xml" qualifiers="" type="layout"/><file name="activity_history" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_history.xml" qualifiers="" type="layout"/><file name="dlt_meter_op" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/dlt_meter_op.xml" qualifiers="" type="layout"/><file name="uhf_configration" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_configration.xml" qualifiers="" type="layout"/><file name="spinner_item" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/spinner_item.xml" qualifiers="" type="layout"/><file name="history_list" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/history_list.xml" qualifiers="" type="layout"/><file name="epclist_item_new" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/epclist_item_new.xml" qualifiers="" type="layout"/><file name="uhf_read" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_read.xml" qualifiers="" type="layout"/><file name="hf_mifare" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_mifare.xml" qualifiers="" type="layout"/><file name="activity_detail_history" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_detail_history.xml" qualifiers="" type="layout"/><file name="uhf_main" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_main.xml" qualifiers="" type="layout"/><file name="hf_iso14443a" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_iso14443a.xml" qualifiers="" type="layout"/><file name="activity_download" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/activity_download.xml" qualifiers="" type="layout"/><file name="scan_main" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/scan_main.xml" qualifiers="" type="layout"/><file name="hf_main" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/hf_main.xml" qualifiers="" type="layout"/><file name="psam_main" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/psam_main.xml" qualifiers="" type="layout"/><file name="uhf_read_matching" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/uhf_read_matching.xml" qualifiers="" type="layout"/><file name="item_main" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/layout/item_main.xml" qualifiers="" type="layout"/><file name="ic_launcher" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable-xxhdpi/ic_launcher.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="ic_launcher" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable-mdpi/ic_launcher.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_launcher" path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/drawable-hdpi/ic_launcher.png" qualifiers="hdpi-v4" type="drawable"/><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values/dimens.xml" qualifiers=""><dimen name="activity_vertical_margin">16dp</dimen><dimen name="activity_horizontal_margin">16dp</dimen></file><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values/arrays.xml" qualifiers=""><string-array name="Array_AntType">
+        <item>1_2</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array><string-array name="Array_ReadType">
+        <item>EPC</item>
+        <item>TID</item>
+        <item>UserData</item>
+    </string-array><string-array name="Array_Block">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item>
+        <item>65</item>
+        <item>66</item>
+        <item>67</item>
+        <item>68</item>
+        <item>69</item>
+        <item>70</item>
+        <item>71</item>
+        <item>72</item>
+        <item>73</item>
+        <item>74</item>
+        <item>75</item>
+        <item>76</item>
+        <item>77</item>
+        <item>78</item>
+        <item>79</item>
+        <item>80</item>
+        <item>81</item>
+        <item>82</item>
+        <item>83</item>
+        <item>84</item>
+        <item>85</item>
+        <item>86</item>
+        <item>87</item>
+        <item>88</item>
+        <item>89</item>
+        <item>90</item>
+        <item>91</item>
+        <item>92</item>
+        <item>93</item>
+        <item>94</item>
+        <item>95</item>
+        <item>96</item>
+        <item>97</item>
+        <item>98</item>
+        <item>99</item>
+        <item>100</item>
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+        <item>108</item>
+        <item>109</item>
+        <item>110</item>
+        <item>111</item>
+        <item>112</item>
+        <item>113</item>
+        <item>114</item>
+        <item>115</item>
+        <item>116</item>
+        <item>117</item>
+        <item>118</item>
+        <item>119</item>
+        <item>120</item>
+        <item>121</item>
+        <item>122</item>
+        <item>123</item>
+        <item>124</item>
+        <item>125</item>
+        <item>126</item>
+        <item>127</item>
+        <item>128</item>
+        <item>129</item>
+        <item>130</item>
+        <item>131</item>
+        <item>132</item>
+        <item>133</item>
+        <item>134</item>
+        <item>135</item>
+        <item>136</item>
+        <item>137</item>
+        <item>138</item>
+        <item>139</item>
+        <item>140</item>
+        <item>141</item>
+        <item>142</item>
+        <item>143</item>
+        <item>144</item>
+        <item>145</item>
+        <item>146</item>
+        <item>147</item>
+        <item>148</item>
+        <item>149</item>
+        <item>150</item>
+        <item>151</item>
+        <item>152</item>
+        <item>153</item>
+        <item>154</item>
+        <item>155</item>
+        <item>156</item>
+        <item>157</item>
+        <item>158</item>
+        <item>159</item>
+        <item>160</item>
+        <item>161</item>
+        <item>162</item>
+        <item>163</item>
+        <item>164</item>
+        <item>165</item>
+        <item>166</item>
+        <item>167</item>
+        <item>168</item>
+        <item>169</item>
+        <item>170</item>
+        <item>171</item>
+        <item>172</item>
+        <item>173</item>
+        <item>174</item>
+        <item>175</item>
+        <item>176</item>
+        <item>177</item>
+        <item>178</item>
+        <item>179</item>
+        <item>180</item>
+        <item>181</item>
+        <item>182</item>
+        <item>183</item>
+        <item>184</item>
+        <item>185</item>
+        <item>186</item>
+        <item>187</item>
+        <item>188</item>
+        <item>189</item>
+        <item>190</item>
+        <item>191</item>
+        <item>192</item>
+        <item>193</item>
+        <item>194</item>
+        <item>195</item>
+        <item>196</item>
+        <item>197</item>
+        <item>198</item>
+        <item>199</item>
+        <item>200</item>
+        <item>201</item>
+        <item>202</item>
+        <item>203</item>
+        <item>204</item>
+        <item>205</item>
+        <item>206</item>
+        <item>207</item>
+        <item>208</item>
+        <item>209</item>
+        <item>210</item>
+        <item>211</item>
+        <item>212</item>
+        <item>213</item>
+        <item>214</item>
+        <item>215</item>
+        <item>216</item>
+        <item>217</item>
+        <item>218</item>
+        <item>219</item>
+        <item>220</item>
+        <item>221</item>
+        <item>222</item>
+        <item>223</item>
+        <item>224</item>
+        <item>225</item>
+        <item>226</item>
+        <item>227</item>
+        <item>228</item>
+        <item>229</item>
+        <item>230</item>
+        <item>231</item>
+        <item>232</item>
+        <item>233</item>
+        <item>234</item>
+        <item>235</item>
+        <item>236</item>
+        <item>237</item>
+        <item>238</item>
+        <item>239</item>
+        <item>240</item>
+        <item>241</item>
+        <item>242</item>
+        <item>243</item>
+        <item>244</item>
+        <item>245</item>
+        <item>246</item>
+        <item>247</item>
+        <item>248</item>
+        <item>249</item>
+        <item>250</item>
+        <item>251</item>
+        <item>252</item>
+        <item>253</item>
+        <item>254</item>
+        <item>255</item>
+    </string-array><string-array name="Array_WriteType">
+        <item>EPC</item>
+        <item>UserData</item>
+    </string-array><string-array name="Array_ReadType_Matching">
+        <item>EPC</item>
+        <item>TID</item>
+    </string-array><string-array name="Array_QValue">
+        <item>0</item>
+        <item>4</item>
+    </string-array><string-array name="Array_Carrier">
+        <item>1</item>
+        <item>2</item>
+    </string-array><string-array name="Array_iso14443a_Model">
+        <item>ALL</item>
+        <item>IDLE</item>
+    </string-array><string-array name="Array_TagType">
+        <item>6C</item>
+        <item>6B</item>
+    </string-array><string-array name="Array_Psam_SelectType">
+        <item>Card 1</item>
+        <item>Card 2</item>
+    </string-array><string-array name="Array_Mode">
+        <item>减</item>
+        <item>加</item>
+        <item>恢复</item>
+    </string-array><string-array name="Array_COM_Speed">
+        <item>1200</item>
+        <item>2400</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>115200</item>
+    </string-array><string-array name="Array_COM_Port">
+        <item>RS485</item>
+        <item>RS232</item>
+        <item>IRDA</item>
+        <item>ESAM</item>
+        </string-array><string-array name="Array_ReadTime">
+        <item>0</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>500</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array><string-array name="Array_StopTime">
+        <item>0</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>500</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array><string-array name="Array_KeyType">
+        <item>密钥A</item>
+        <item>密钥B</item>
+    </string-array><string-array name="Array_mifareType">
+        <item>用户区</item>
+        <item>钱包</item>
+    </string-array><string-array name="Array_BaseSpeedType">
+        <item>0|Tari=25us，FM0，LHF=40KHz</item>
+        <item>1|Concentrated</item>
+        <item>2|Tari=25us，Miller4，LHF=300KHz</item>
+        <item>3|Fast</item>
+        <item>255|AUTO</item>
+    </string-array><string-array name="Array_COM_Parity">
+        <item>NONE</item>
+        <item>ODD</item>
+        <item>EVEN</item>
+    </string-array><string-array name="Array_Power">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+    </string-array><string-array name="Array_CompareType">
+        <item>不认证</item>
+        <item>直接认证</item>
+        <item>E2认证</item>
+    </string-array><string-array name="Array_Frequency">
+        <item>0，GB 920~925MHz</item>
+        <item>1，GB 840~845MHz</item>
+        <item>2，GB 840~845MHz And 920~925MHz</item>
+        <item>3，FCC 902~928MHz</item>
+        <item>4，ETSI 865~868MHz</item>
+    </string-array></file><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values/styles.xml" qualifiers=""><style name="UHFTheme" parent="AppTheme">
+         <item name="android:textSize">14sp</item>
+     </style><style name="AppTheme">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:windowNoTitle">True</item>
+        <!-- <item name="android:windowFullscreen">?android:windowNoTitle</item> -->
+        
+        <item name="android:textSize">18sp</item>
+        <item name="android:typeface">sans</item>
+    </style><style name="defaultTitleStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/bg_title</item>
+    </style><style name="defaultActivityStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/background</item>
+        <item name="android:baselineAligned">false</item>
+    </style></file><file path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/main/res/values/strings.xml" qualifiers=""><string name="MeterReadItemAmpB">Current(B)</string><string name="str_cancel">Cancel</string><string name="btn_MainMenu_Scan">Scanner</string><string name="MeterReadItemAmpC">Current(C)</string><string name="str_loading">loading.…</string><string name="btn_MainMenu_DLT">DLT</string><string name="MeterReadItemAmpA">Current(A)</string><string name="str_ok">OK</string><string name="MeterSpeed">Speed: </string><string name="write_waiting">Writing,please wait a moment.…</string><string name="List_TagID">EPC</string><string name="scanner_open_power_faild">open power faild!</string><string name="btn_UHFMenu_Write">Write-Test</string><string name="btn_Restore">RESTORE</string><string name="MeterProtocol">Protocol: </string><string name="DefaultMeterAddr">000000000000</string><string name="Tag_Count_matching">Total:0</string><string name="btn_ReadTime">ReadTime(ms):</string><string name="MeterReadItemVolt">Voltage</string><string name="tv_Write_MatchTID">TID:</string><string name="txtBlockNoDefult">1</string><string name="uhf_please_stop">Please stop!</string><string name="psam_low_power_info">Low battery, please charge!</string><string name="Tag_ReadTotalCount_matching">SP:0 T/S</string><string name="MeterPasswd">Passwd: </string><string name="MeterSettingItemTime">Time</string><string name="please_select_valid_item">please select valid item!</string><string name="please_input_valid_passwd">Please input valid passwd!</string><string name="Clear_Tags">Clear</string><string name="uhf_6b_not_support_match_mode">The 6B tag does not support match read!</string><string name="TestPower_Start">Start</string><string name="tv_Write_WriteData">Data:</string><string name="setting_success">set success!</string><string name="please_input_valid_key">Please enter a valid key!</string><string name="str_btn_com_send">Send</string><string name="str_success">success</string><string name="MeterSettingItemIRSpeed">IRDA Baudrate</string><string name="SettingMeter">Set</string><string name="ButtonWriteText">Write</string><string name="btn_UHFMenu_Back">Back</string><string name="text_com_port">Port:</string><string name="LabelKeyText">Key:</string><string name="Tag_Time">Time:0 S </string><string name="tv_Configration_Frequency">Frequency:</string><string name="MeterAddress">Address: </string><string name="Exit">Exit</string><string name="btn_CARRIER">CARRIER</string><string name="read_success">Success!</string><string name="btn_Set">SET</string><string name="psam_atr">ATR:</string><string name="btn_MainMenu_UHF">UHF</string><string name="btn_read_1_matching">Stop</string><string name="btn_Back_matching">Back</string><string name="btn_MainMenu_HF">HF</string><string name="txtKeyDefault">FFFFFFFFFFFF</string><string name="read_waiting">reading, please wait a moment.…</string><string name="MeterItem">Item: </string><string name="btn_UHFMenu_Read_Matching">Read-Matching</string><string name="PowerFaild">Turn on power failure! Verify that the module is connected and powered!</string><string name="psam_apdu">APDU:</string><string name="btn_MainMenu_Exit">Exit</string><string name="ButtonReadText">Read</string><string name="write_faild">Failure!</string><string name="str_btn_com_close">Close</string><string name="read_result">Result:</string><string name="str_configure">configure</string><string name="btn_UHFMenu_Configration">Configration</string><string name="tv_Configration_Ant">ANT:</string><string name="MeterReadItemLastDay">Day Power</string><string name="please_input_valid_addr">Please input valid address!</string><string name="MeterProtocol97">DLT645_1997</string><string name="SendData">Send Data:</string><string name="str_confirm">Confirm</string><string name="app_name">PDADemo Edit</string><string name="uhf_default_access_pwd">00000000</string><string name="btn_read_stop">Stop</string><string name="MeterReadItemVoltA">Voltage(A)</string><string name="MeterReadItemVoltB">Voltage(B)</string><string name="btn_UHFMenu_Read">Read-Test</string><string name="MeterReadItemVoltC">Voltage(C)</string><string name="read_faild">Failure!</string><string name="setting_waiting">Setting,please wait…</string><string name="btn_Get">GET</string><string name="STR_METER_READ">Meter Read</string><string name="btn_Back">Back</string><string name="MeterSettingItemMeterNo">Meter No.</string><string name="MeterReadItemProgNum">Program count</string><string name="MeterPortRS485">RS485</string><string name="please_input_valid_value">Please input valid data!</string><string name="uhf_low_power_info">Low battery, please charge!</string><string name="MeterValue">Value: </string><string name="MeterOpcode">OpCode: </string><string name="MeterPortIRDA">IRDA</string><string name="Back">Back</string><string name="btn_HFMenu_ISO14443A">ISO14443A</string><string name="tv_MainMenu_Title">PDADemo</string><string name="str_please_waitting">please wait.…</string><string name="TestPower_Stop">Stop</string><string name="btn_read">Start</string><string name="btn_StopTime">StopTime(ms): </string><string name="btn_Read_UID">Scan Tag</string><string name="str_faild">faild</string><string name="STR_METER_SETTING">Meter Setting</string><string name="btn_UpdateBase">UpdateBase</string><string name="GetAddrByF1">Press "F1" for Get Address</string><string name="MeterProtocol07">DLT645_2007</string><string name="btn_read_matching">Start</string><string name="btn_HFMenu_Mifare">Mifare</string><string name="str_busy">busy!</string><string name="MeterSettingItemAddress">Meter Address</string><string name="MeterReadItemLastProgRec">Last Program record</string><string name="psam_poweron">PowerOn</string><string name="tv_Write_AccessPassword">AccessPassword:</string><string name="please_input_valid_data">Please enter valid data!</string><string name="btn_Write_ReadMatch">Read Match Tag</string><string name="btn_UHFMenu_Title">UHF_DEMO</string><string name="tv_Configration_Power">Power:</string><string name="uhf_low_power_consumption">Low power consumption, whether the use of the main power supply?</string><string name="Clear_Tags_matching">Clear</string><string name="MeterSpeed4800">4800</string><string name="ReadMeter">Read</string><string name="psam_rpdu">RPDU:</string><string name="setting_result">set result</string><string name="waiting">Waiting…</string><string name="psam_please_check_card">Please check insert card!</string><string name="tv_Write_WriteType">Type:</string><string name="write_success">Success!</string><string name="List_TagID_matching">EPC</string><string name="btn_MainMenu_Version">Version</string><string name="setting_faild">Set faild， please try again!</string><string name="Tag_Time_matching">Time:0 S </string><string name="btn_HFMenu_Back">Back</string><string name="DefaultMeterPasswd">00000000</string><string name="btn_MainMenu_SerialNumber">SerialNumber</string><string name="MeterReadItemPower">Power</string><string name="tv_Read_Title_matching">Read Matching</string><string name="MeterPort">Port: </string><string name="uhf_data_error">Data error!</string><string name="com_send">Send Data:</string><string name="tv_Read_Title">Read EPC</string><string name="btn_HFMenu_ISO15693">ISO15693</string><string name="STR_FREE_SEND">Free Send</string><string name="Tag_ReadTotalCount">SP:0 T/S</string><string name="List_ReadCount_matching">Count</string><string name="psam_send">Send</string><string name="text_com_parity">Parity:</string><string name="MeterSpeed2400">2400</string><string name="com_recv">RECV Data:</string><string name="Tag_Count">Total:0</string><string name="tv_Write_MatchTitle">Match Param:</string><string name="text_com_speed">Speed:</string><string name="tv_Configration_BaseSpeed">BaseSpeed:</string><string name="tv_Write_WriteTitle">Write Data:</string><string name="MeterReadItemLastMonth">Month Power</string><string name="tv_Write_Title">Write EPC</string><string name="tv_Configration_TagType">TagType:</string><string name="str_btn_com_open">Open</string><string name="tv_Configration_QValue">QValue:</string><string name="btn_Write_WriteData">Write Tag</string><string name="btn_MainMenu_Psam">PSAM</string><string name="List_ReadCount">Count</string><string name="scanner_trigger">Trigger</string><string name="LabelBlockNoText">Block:</string><string name="MeterSettingItemDate">Date</string><string name="tv_HF_Title">HF_DEMO</string><string name="MeterSpeed1200">1200</string><string name="MeterReadItemAmp">Current</string><string name="please_input_valid_opcode">Please input valid opcode!</string><string name="LabelDataAreaText">Data Area:</string><string name="DefaultMeterOpcode">00000000</string></file></source><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/generated/res/rs/debug"/><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/build/generated/res/resValues/debug"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="/home/roka/Project/rfidCodeScannerUI/Android Studio/app/src/debug/res"/></dataSet><mergedItems/></merger>

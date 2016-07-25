@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:baselineAligned="false"
+    style="@style/AppTheme">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        style="@style/defaultTitleStyle">
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textColor="#666666"
+	        android:text="@string/tv_HF_Title" />
+	    
+	</LinearLayout>
+    <Button 
+         android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/btn_HFMeum_ISO15693"
+        android:text="@string/btn_HFMenu_ISO15693"
+        
+        android:onClick="OpenISO15693Activity" />
+	<Button 
+	     android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/btn_HFMenu_ISO14443A"
+        android:text="@string/btn_HFMenu_ISO14443A"
+        
+        android:onClick="OpenISO14443AActivity" />
+	<Button 
+	     android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/btn_HFMenu_Mifare"
+        android:text="@string/btn_HFMenu_Mifare"
+        
+        android:onClick="OpenMifareActivity" />
+	<!--<Button 
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/btn_Item_Main_SerialNumber"
+        android:text="SerialNumber"
+        
+        android:onClick="GetSerialNumber" /> -->
+	<Button 
+	     android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="68dp"
+        android:id="@+id/btn_HFMenu_Exit"
+        android:text="@string/btn_HFMenu_Back"   
+        
+        android:onClick="Back" />
+</LinearLayout>
