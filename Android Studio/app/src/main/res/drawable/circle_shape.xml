@@ -22,11 +22,12 @@
                 android:color="@color/accent_color"/>
 
             <size
-                android:width="256dp"
-                android:height="256dp"/>
+                android:width="128dp"
+                android:height="128dp"/>
 
             <stroke
                 android:color="@color/divider"/>
+
         </shape>
     </item>
 </selector>

@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.clouiotech.pda.demoExample.R;
@@ -17,6 +18,9 @@ import com.clouiotech.pda.demoExample.R;
  */
 public class MainActivity extends AppCompatActivity {
     private ImageView mIvScanUHF;
+    private LinearLayout mLlDownload;
+    private LinearLayout mLlScan;
+    private LinearLayout mLlClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +28,40 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
 
         mIvScanUHF = (ImageView) findViewById(R.id.iv_uhf);
+        mLlDownload = (LinearLayout) findViewById(R.id.ll_download);
+        mLlScan = (LinearLayout) findViewById(R.id.ll_scan);
+        mLlClear = (LinearLayout) findViewById(R.id.ll_clear);
 
-        mIvScanUHF.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Scan UHF set", Toast.LENGTH_SHORT).show();
+                switch (view.getId()) {
+                    case R.id.iv_uhf : {
+                        Toast.makeText(MainActivity.this, "Scan UHF set", Toast.LENGTH_SHORT).show();
+                    } break;
+
+                    case R.id.ll_download : {
+                        Toast.makeText(MainActivity.this, "Download Data", Toast.LENGTH_SHORT).show();
+                    } break;
+
+                    case R.id.ll_scan : {
+                        Toast.makeText(MainActivity.this, "History Scan", Toast.LENGTH_SHORT).show();
+                    } break;
+
+                    case R.id.ll_clear : {
+                        Toast.makeText(MainActivity.this, "Clear Data", Toast.LENGTH_SHORT).show();
+                    } break;
+
+                    default:
+                        break;
+                }
             }
-        });
+        };
+
+        mIvScanUHF.setOnClickListener(clickListener);
+        mLlClear.setOnClickListener(clickListener);
+        mLlScan.setOnClickListener(clickListener);
+        mLlDownload.setOnClickListener(clickListener);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
