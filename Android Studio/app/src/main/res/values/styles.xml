@@ -10,13 +10,15 @@
 
     <!-- style name="AppTheme"  parent="android:Theme.Holo.Light.DarkActionBar"-->
     <!-- style name="AppTheme" parent="android:Theme.Black"-->
-    <style name="AppTheme">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:windowNoTitle">True</item>
-        <!-- <item name="android:windowFullscreen">?android:windowNoTitle</item> -->
-        
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:colorAccent">@color/accent_color</item>
         <item name="android:textSize">18sp</item>
         <item name="android:typeface">sans</item>
     </style>
@@ -42,6 +44,13 @@
      <style name="UHFTheme"  parent="AppTheme">
          <item name="android:textSize">14sp</item>
      </style>
+
+    <style name="AppMaterialTheme" parent="Theme.AppCompat.Light">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:colorAccent">@color/accent_color</item>
+    </style>
 
 
 </resources>

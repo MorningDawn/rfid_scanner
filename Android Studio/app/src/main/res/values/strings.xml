@@ -31,6 +31,7 @@
 
     <!-- UHF Read -->
     <string name="app_name">PDADemo Edit</string>
+    <string name="app_version">ver.1.0</string>
     <string name="List_TagID">EPC</string>
     <string name="List_ReadCount">Count</string>
     <string name="Tag_Time">Time:0 S </string>
