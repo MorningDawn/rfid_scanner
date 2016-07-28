@@ -1,6 +1,9 @@
 package com.clouiotech.pda.demo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.clouiotech.pda.demo.fragment.StockScanFragment;
 import com.clouiotech.pda.demoExample.R;
 /**
  * Created by roka on 25/07/16.
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (view.getId()) {
                     case R.id.iv_uhf : {
                         Toast.makeText(MainActivity.this, "Scan UHF set", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, ScanUHFActivity.class);
+                        startActivity(intent);
                     } break;
 
                     case R.id.ll_download : {

@@ -64,6 +64,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.clouiotech.pda.demo.activity.ScanUHFActivity">
+
+        </activity>
+
         <activity android:name="com.clouiotech.pda.demo.ItemMainActivity" >
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
