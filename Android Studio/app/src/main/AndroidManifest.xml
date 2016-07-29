@@ -57,14 +57,14 @@
             -->
         </activity>
 
-        <activity android:name="com.clouiotech.pda.demo.activity.MainActivity">
+        <activity android:name="com.clouiotech.pda.demo.Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="com.clouiotech.pda.demo.activity.ScanUHFActivity">
+        <activity android:name="com.clouiotech.pda.demo.Activity.ScanUHFActivity">
 
         </activity>
 
