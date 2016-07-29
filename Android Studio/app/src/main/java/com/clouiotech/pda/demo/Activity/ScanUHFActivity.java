@@ -10,6 +10,7 @@ import com.clouiotech.pda.demo.fragment.StockScanFragment;
 import com.clouiotech.pda.demoExample.R;
 
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 /**
@@ -43,5 +44,16 @@ public class ScanUHFActivity extends ActionBarActivity implements View.OnClickLi
             default :
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home :
+                finish();
+                break;
+        }
+
+        return true;
     }
 }

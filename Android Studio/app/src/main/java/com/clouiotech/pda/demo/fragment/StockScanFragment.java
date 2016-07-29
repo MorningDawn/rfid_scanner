@@ -45,8 +45,10 @@ public class StockScanFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_stock_scan, null, false);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.rv_epc_scan);
 
-        for (int i = 0; i < 100; i++) {
-            mListData.add(new EpcObject(i,i));
+        for (int i = 0; i < 300; i++) {
+            String id = "EPC " + i;
+            String desc = "EPC Desc" + i;
+            mListData.add(new EpcObject(id, desc, i, i));
         }
 
         mRecyclerView.setLayoutManager(mManager);

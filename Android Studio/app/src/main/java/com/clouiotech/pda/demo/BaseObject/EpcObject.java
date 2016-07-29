@@ -4,6 +4,8 @@ package com.clouiotech.pda.demo.BaseObject;
  * Created by roka on 29/07/16.
  */
 public class EpcObject {
+    private String mId;
+    private String mDesc;
     private int mQuantity;
     private int mPhysic;
     private int mDelta;
@@ -14,7 +16,9 @@ public class EpcObject {
     public static int EPC_STATUS_LESS = 2;
 
     // constructor
-    public EpcObject(int quantity, int physic) {
+    public EpcObject(String id, String desc, int quantity, int physic) {
+        this.mId = id;
+        this.mDesc = desc;
         this.mQuantity = quantity;
         this.mPhysic = physic;
         this.mDelta = physic - quantity;
@@ -38,17 +42,18 @@ public class EpcObject {
         this.mDelta = delta;
     }
 
-    public void setStatus(int status) {
-        this.mStatus = status;
-    }
+    public void setStatus(int status) { this.mStatus = status; }
 
+    public void setId(String id) { this.mId = id; }
+
+    public void setDesc(String desc){ this.mDesc = desc; }
     // get method
 
     public int getQuantity() {
         return mQuantity;
     }
 
-    public int getmPhysic() {
+    public int getPhysic() {
         return mPhysic;
     }
 
@@ -60,4 +65,7 @@ public class EpcObject {
         return mStatus;
     }
 
+    public String getId(){ return mId; }
+
+    public String getDesc(){ return mDesc; }
 }
