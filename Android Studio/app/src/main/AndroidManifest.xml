@@ -64,7 +64,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.clouiotech.pda.demo.Activity.ScanUHFActivity">
+        <activity android:name="com.clouiotech.pda.demo.Activity.RecyclerViewActivity">
 
         </activity>
 

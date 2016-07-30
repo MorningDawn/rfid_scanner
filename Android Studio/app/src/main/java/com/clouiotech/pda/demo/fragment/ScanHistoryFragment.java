@@ -9,53 +9,51 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.clouiotech.pda.demo.Adapter.EpcScanAdapter;
-import com.clouiotech.pda.demo.BaseObject.EpcObject;
+import com.clouiotech.pda.demo.Adapter.ScanHistoryAdapter;
+import com.clouiotech.pda.demo.BaseObject.ScanHistoryObject;
 import com.clouiotech.pda.demoExample.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by roka on 28/07/16.
+ * Created by roka on 30/07/16.
  */
-public class StockScanFragment extends Fragment {
-    private EpcScanAdapter mAdapter;
-    private List<EpcObject> mListData = new ArrayList<>();
+public class ScanHistoryFragment extends Fragment {
+    private List<ScanHistoryObject> mListData;
+    private ScanHistoryAdapter mAdapter;
     private LinearLayoutManager mManager;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRvRecycler;
 
-    public static StockScanFragment newInstance(){
-        StockScanFragment fragment = new StockScanFragment();
+    public static ScanHistoryFragment newInstance() {
+        ScanHistoryFragment fragment = new ScanHistoryFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mListData = new ArrayList<>();
+        mAdapter = new ScanHistoryAdapter(getActivity(), mListData);
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        mAdapter = new EpcScanAdapter(mListData, getActivity());
-
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_recycler_view, null, false);
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.rv_recycler);
+
+        mRvRecycler = (RecyclerView) v.findViewById(R.id.rv_recycler);
+
+        mRvRecycler.setLayoutManager(mManager);
+        mRvRecycler.setAdapter(mAdapter);
 
         for (int i = 0; i < 300; i++) {
-            String id = "EPC " + i;
-            String desc = "EPC Desc" + i;
-            mListData.add(new EpcObject(id, desc, i, i));
+            ScanHistoryObject scanHistoryObject = new ScanHistoryObject("Scan Code "+i, "Scan Number "+i, "1 Januari 1990");
+            mListData.add(scanHistoryObject);
         }
 
-        mRecyclerView.setLayoutManager(mManager);
-        mRecyclerView.setAdapter(mAdapter);
-
         mAdapter.notifyDataSetChanged();
-
         return v;
     }
 }

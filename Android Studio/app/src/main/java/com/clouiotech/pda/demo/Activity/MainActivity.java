@@ -11,11 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.clouiotech.pda.demo.BaseObject.GlobalVariable;
 import com.clouiotech.pda.demoExample.R;
 /**
  * Created by roka on 25/07/16.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView mIvScanUHF;
     private LinearLayout mLlDownload;
     private LinearLayout mLlScan;
@@ -31,38 +32,10 @@ public class MainActivity extends AppCompatActivity {
         mLlScan = (LinearLayout) findViewById(R.id.ll_scan);
         mLlClear = (LinearLayout) findViewById(R.id.ll_clear);
 
-        View.OnClickListener clickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.iv_uhf : {
-                        Toast.makeText(MainActivity.this, "Scan UHF set", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, ScanUHFActivity.class);
-                        startActivity(intent);
-                    } break;
-
-                    case R.id.ll_download : {
-                        Toast.makeText(MainActivity.this, "Download Data", Toast.LENGTH_SHORT).show();
-                    } break;
-
-                    case R.id.ll_scan : {
-                        Toast.makeText(MainActivity.this, "History Scan", Toast.LENGTH_SHORT).show();
-                    } break;
-
-                    case R.id.ll_clear : {
-                        Toast.makeText(MainActivity.this, "Clear Data", Toast.LENGTH_SHORT).show();
-                    } break;
-
-                    default:
-                        break;
-                }
-            }
-        };
-
-        mIvScanUHF.setOnClickListener(clickListener);
-        mLlClear.setOnClickListener(clickListener);
-        mLlScan.setOnClickListener(clickListener);
-        mLlDownload.setOnClickListener(clickListener);
+        mIvScanUHF.setOnClickListener(this);
+        mLlClear.setOnClickListener(this);
+        mLlScan.setOnClickListener(this);
+        mLlDownload.setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -87,5 +60,35 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_uhf : {
+                Toast.makeText(MainActivity.this, "Scan UHF set", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                intent.putExtra(GlobalVariable.INTENT_EXTRA_PAGE, GlobalVariable.PAGE_TO_STOCK_SCAN_FRAGMENT);
+                startActivity(intent);
+            } break;
+
+            case R.id.ll_download : {
+                Toast.makeText(MainActivity.this, "Download Data", Toast.LENGTH_SHORT).show();
+            } break;
+
+            case R.id.ll_scan : {
+                Toast.makeText(MainActivity.this, "History Scan", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                intent.putExtra(GlobalVariable.INTENT_EXTRA_PAGE, GlobalVariable.PAGE_TO_HISTORY_SCAN_FRAGMENT);
+                startActivity(intent);
+            } break;
+
+            case R.id.ll_clear : {
+                Toast.makeText(MainActivity.this, "Clear Data", Toast.LENGTH_SHORT).show();
+            } break;
+
+            default:
+                break;
+        }
     }
 }

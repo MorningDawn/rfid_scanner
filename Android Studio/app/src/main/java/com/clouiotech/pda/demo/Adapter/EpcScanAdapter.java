@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -66,10 +67,13 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
     public class ViewHolderEpc extends RecyclerView.ViewHolder {
         public RelativeLayout rlCard;
         public TextView tvEpcId, tvEpcDesc, tvEpcQuantity, tvEpcPhysic, tvEpcDelta;
+        public ImageView ivEpcDelta;
+
 
         public ViewHolderEpc(View v) {
             super(v);
             rlCard = (RelativeLayout) v.findViewById(R.id.ll_card);
+            ivEpcDelta = (ImageView) v.findViewById(R.id.iv_delta);
             tvEpcId = (TextView) v.findViewById(R.id.tv_epc_id);
             tvEpcDesc = (TextView) v.findViewById(R.id.tv_epc_desc);
             tvEpcQuantity = (TextView) v.findViewById(R.id.tv_quantity);

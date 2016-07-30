@@ -191,4 +191,8 @@
     <string name="psam_send">Send</string>
     <string name="psam_please_check_card">Please check insert card!</string>
 
+    <!-- Activity & Fragment -->
+    <string name="fragment_scan_history">Scan History</string>
+    <string name="fragment_stock_scan">Stock Scan</string>
+
 </resources>

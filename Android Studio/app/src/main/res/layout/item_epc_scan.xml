@@ -8,11 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll_layout"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="8dp"
-        android:paddingTop="8dp"
         android:weightSum="10"
         android:orientation="horizontal">
 
