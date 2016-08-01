@@ -11,9 +11,9 @@ public class EpcObject {
     private int mDelta;
     private int mStatus;
 
-    public static int EPC_STATUS_NORMAL = 0;
-    public static int EPC_STATUS_OVER = 1;
-    public static int EPC_STATUS_LESS = 2;
+    public static final int EPC_STATUS_NORMAL = 0;
+    public static final int EPC_STATUS_OVER = 1;
+    public static final int EPC_STATUS_LESS = 2;
 
     // constructor
     public EpcObject(String id, String desc, int quantity, int physic) {

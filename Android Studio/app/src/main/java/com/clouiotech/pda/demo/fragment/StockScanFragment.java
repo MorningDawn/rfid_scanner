@@ -15,6 +15,7 @@ import com.clouiotech.pda.demoExample.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by roka on 28/07/16.
@@ -45,10 +46,13 @@ public class StockScanFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_recycler_view, null, false);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.rv_recycler);
 
+        Random r = new Random();
         for (int i = 0; i < 300; i++) {
+            int quantity = r.nextInt(300);
+            int physic = r.nextInt(300);
             String id = "EPC " + i;
             String desc = "EPC Desc" + i;
-            mListData.add(new EpcObject(id, desc, i, i));
+            mListData.add(new EpcObject(id, desc, quantity, physic));
         }
 
         mRecyclerView.setLayoutManager(mManager);

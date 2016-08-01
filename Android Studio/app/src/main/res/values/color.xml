@@ -8,7 +8,8 @@
     <color name="accent_color_darker">#CB376A</color>
     <color name="background">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
-    <color name="alert_more">#f44336</color>
-    <color name="alert_less">#ffc107</color>
+    <color name="alert_more">#2196F3</color>
+    <color name="alert_less">#F44336</color>
+    <color name="alert_normal">#8BC34A</color>
 
 </resources>

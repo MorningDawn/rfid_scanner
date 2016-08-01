@@ -39,7 +39,7 @@ public class ScanHistoryAdapter extends RecyclerView.Adapter<ScanHistoryAdapter.
         ScanHistoryObject scanHistoryObject = mListData.get(position);
 
         holder.tvScanNumber.setText("" + scanHistoryObject.getHistoryNumber());
-        holder.tvScanCode.setText("" + scanHistoryObject.getHistoryCode());
+        holder.tvScanCode.setText("" + scanHistoryObject.getHistoryCode() + "   |   by User " + position);
         holder.tvScanDate.setText("" + scanHistoryObject.getHistoryDate());
 
         holder.llCard.setOnClickListener(this);

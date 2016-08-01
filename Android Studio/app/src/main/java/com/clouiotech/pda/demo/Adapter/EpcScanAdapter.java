@@ -15,6 +15,8 @@ import com.clouiotech.pda.demo.BaseObject.EpcObject;
 import com.clouiotech.pda.demoExample.R;
 import com.clouiotech.pda.rfid.EPCModel;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -47,6 +49,8 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
         holder.tvEpcPhysic.setText("" + epc.getPhysic());
         holder.rlCard.setOnClickListener(this);
 
+        setDeltaStatus(epc.getStatus(), holder);
+
         holder.rlCard.setTag(position);
     }
 
@@ -62,6 +66,29 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
                 int pos = (int) view.getTag();
                 Toast.makeText(mContext, "Item " + pos, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void setDeltaStatus(int delta, ViewHolderEpc vh) {
+        int color = mContext.getResources().getColor(R.color.text_primary);
+        switch (delta) {
+            case EpcObject.EPC_STATUS_LESS :
+                color = mContext.getResources().getColor(R.color.alert_less);
+                break;
+
+            case EpcObject.EPC_STATUS_NORMAL :
+                color = mContext.getResources().getColor(R.color.alert_normal);
+                break;
+
+            case EpcObject.EPC_STATUS_OVER :
+                color = mContext.getResources().getColor(R.color.alert_more);
+                break;
+        }
+
+        vh.tvEpcQuantity.setTextColor(color);
+        vh.tvEpcPhysic.setTextColor(color);
+        vh.tvEpcDelta.setTextColor(color);
+        vh.tvEpcDesc.setTextColor(color);
+        vh.tvEpcId.setTextColor(color);
     }
 
     public class ViewHolderEpc extends RecyclerView.ViewHolder {

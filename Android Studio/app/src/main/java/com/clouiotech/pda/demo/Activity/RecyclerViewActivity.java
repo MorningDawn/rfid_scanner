@@ -11,8 +11,10 @@ import com.clouiotech.pda.demo.fragment.StockScanFragment;
 import com.clouiotech.pda.demoExample.R;
 
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by roka on 28/07/16.
@@ -68,10 +70,24 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_recycler_view, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case android.R.id.home :
                 finish();
+                break;
+
+            case R.id.menu_save :
+                Toast.makeText(RecyclerViewActivity.this, "Save button", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menu_sort :
+                Toast.makeText(RecyclerViewActivity.this, "Sort button", Toast.LENGTH_SHORT).show();
                 break;
         }
 

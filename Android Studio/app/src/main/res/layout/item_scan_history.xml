@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_scan_code"
-                android:text="Kode scan"
+                android:text="Kode scan   |   by User 1"
                 android:textSize="10dp"
                 android:textColor="@color/text_secondary"/>
         </LinearLayout>
