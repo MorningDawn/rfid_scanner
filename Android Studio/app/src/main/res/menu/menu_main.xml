@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_version"
         android:title="Version"
-        android:showAsAction="never"/>
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_admin_privillege"
+        android:title="Admin Mode On"
+        app:showAsAction="never"/>
 </menu>

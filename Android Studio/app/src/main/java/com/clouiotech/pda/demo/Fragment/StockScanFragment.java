@@ -1,4 +1,4 @@
-package com.clouiotech.pda.demo.fragment;
+package com.clouiotech.pda.demo.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

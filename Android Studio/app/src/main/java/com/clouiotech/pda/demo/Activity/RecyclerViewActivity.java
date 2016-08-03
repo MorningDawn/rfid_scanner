@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 
 import com.clouiotech.pda.demo.BaseObject.GlobalVariable;
-import com.clouiotech.pda.demo.fragment.ScanHistoryFragment;
-import com.clouiotech.pda.demo.fragment.StockScanFragment;
+import com.clouiotech.pda.demo.Fragment.ScanHistoryFragment;
+import com.clouiotech.pda.demo.Fragment.StockScanFragment;
 import com.clouiotech.pda.demoExample.R;
 
 import android.support.v7.widget.Toolbar;
@@ -25,7 +25,7 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.scan_uhf_activity);
+        setContentView(R.layout.activity_scan_uhf);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
