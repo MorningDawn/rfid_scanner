@@ -39,15 +39,40 @@
             android:padding="16dp"
             android:clickable="true"
             android:layout_marginBottom="8dp"
-            android:layout_centerInParent="true"/>
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_uhf"
+            android:layout_margin="8dp"
+            android:textSize="14dp"
+            android:text="Scan Stok Opname"
+            android:layout_below="@+id/iv_uhf"
+            android:gravity="center"
+            android:textColor="@color/background"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_uhf_mode_2"
+            android:layout_below="@+id/tv_uhf"
+            android:src="@drawable/ic_find_replace_white_36dp"
+            android:background="@drawable/circle_shape_secondary"
+            android:padding="16dp"
+            android:clickable="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="48dp"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="14dp"
-            android:text="Scan Stok Opname"
-            android:layout_below="@+id/iv_uhf"
+            android:text="Scan Stok Opname Mode 2"
+            android:layout_below="@+id/iv_uhf_mode_2"
             android:gravity="center"
             android:textColor="@color/background"
             android:textStyle="bold"/>

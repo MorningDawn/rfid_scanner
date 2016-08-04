@@ -6,6 +6,10 @@
     <color name="text_secondary">#727272</color>
     <color name="accent_color">#FF4081</color>
     <color name="accent_color_darker">#CB376A</color>
+    <color name="circle_shape_secondary">#4CAF50</color>
+    <color name="circle_shape_secondary_darker">#388E3C</color>
+    <color name="circle_shape">#448AFF</color>
+    <color name="circle_shape_darker">#1976d2</color>
     <color name="background">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <color name="alert_more">#2196F3</color>

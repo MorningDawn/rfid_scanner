@@ -4,7 +4,7 @@
         <shape
             android:shape="oval">
             <solid
-                android:color="@color/circle_shape_darker"/>
+                android:color="@color/circle_shape_secondary_darker"/>
 
             <size
                 android:width="128dp"
@@ -19,7 +19,7 @@
         <shape
             android:shape="oval">
             <solid
-                android:color="@color/circle_shape"/>
+                android:color="@color/circle_shape_secondary"/>
 
             <size
                 android:width="128dp"
