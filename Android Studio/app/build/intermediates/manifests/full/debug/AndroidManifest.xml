@@ -47,7 +47,20 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+
+        <!-- NEW UI ACTIVITY STARTS HERE -->
+        <activity android:name="com.clouiotech.pda.demo.Activity.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.Activity.RecyclerViewActivity" >
+        </activity>
+        <activity android:name="com.clouiotech.pda.demo.Activity.AdminMainActivity" />
+        <!-- NEW UI ACTIVITY ENDS HERE -->
         <activity android:name="com.clouiotech.pda.demo.uhf.UHFMain" >
 
             <!--
@@ -58,11 +71,13 @@
             -->
         </activity>
         <activity android:name="com.clouiotech.pda.demo.ItemMainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name="com.clouiotech.pda.demo.uhf.ReadEPCActivity" >
         </activity>
