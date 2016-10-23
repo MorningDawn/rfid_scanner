@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,22 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.clouiotech.pda.demo.BaseObject.GlobalVariable;
+import com.clouiotech.pda.demo.BaseObject.Item;
+import com.clouiotech.pda.demo.BaseObject.ItemResponse;
+import com.clouiotech.pda.demo.restclient.BaseRestClient;
+import com.clouiotech.pda.demo.restinterface.BaseRestInterface;
 import com.clouiotech.pda.demoExample.R;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Logger;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * Created by roka on 25/07/16.
  */
@@ -79,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.ll_download : {
                 Toast.makeText(MainActivity.this, "Download Data", Toast.LENGTH_SHORT).show();
+                downloadData();
             } break;
 
             case R.id.ll_scan : {
@@ -95,5 +112,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+    }
+
+    private void downloadData() {
+        BaseRestInterface restInterface = BaseRestClient.getRestClient().create(BaseRestInterface.class);
+
+        Call<ItemResponse> call = restInterface.getTryJson();
+
+        Toast.makeText(MainActivity.this, "In Download Data", Toast.LENGTH_SHORT).show();
+
+        call.enqueue(new Callback<ItemResponse>() {
+            @Override
+            public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
+                int statusCode = response.code();
+                List<Item> listItem = response.body().getListItem();
+
+                Toast.makeText(MainActivity.this, "In Callback", Toast.LENGTH_SHORT).show();
+                for(int i=0; i<listItem.size(); i++) {
+                    Toast.makeText(MainActivity.this,
+                            "ini " + listItem.get(i).getItemId(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ItemResponse> call, Throwable throwable) {
+                String error = throwable.toString();
+                Toast.makeText(MainActivity.this, "On Failure " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

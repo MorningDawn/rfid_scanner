@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Item {
     public Item(String id, String code, String desc, String partNumber, String bar, String uomCode,
-                int stocks, boolean isActive) {
+                String stocks, boolean isActive) {
         this.itemId = id;
         this.itemCode = code;
         this.itemDescription = desc;
@@ -36,7 +36,7 @@ public class Item {
     private String uomCode;
 
     @SerializedName("min_stock")
-    private int minStock;
+    private String minStock;
 
     @SerializedName("active_flag")
     private boolean activeFlag;
@@ -65,7 +65,7 @@ public class Item {
         return uomCode;
     }
 
-    public int getMinStock() {
+    public String getMinStock() {
         return minStock;
     }
 
@@ -93,7 +93,7 @@ public class Item {
         this.barcode = barcode;
     }
 
-    public void setMinStock(int minStock) {
+    public void setMinStock(String minStock) {
         this.minStock = minStock;
     }
 
