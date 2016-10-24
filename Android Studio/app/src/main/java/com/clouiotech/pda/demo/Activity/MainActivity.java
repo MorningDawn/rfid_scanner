@@ -119,20 +119,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Call<ItemResponse> call = restInterface.getTryJson();
 
-        Toast.makeText(MainActivity.this, "In Download Data", Toast.LENGTH_SHORT).show();
-
         call.enqueue(new Callback<ItemResponse>() {
             @Override
             public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
                 int statusCode = response.code();
                 List<Item> listItem = response.body().getListItem();
-
-                Toast.makeText(MainActivity.this, "In Callback", Toast.LENGTH_SHORT).show();
-                for(int i=0; i<listItem.size(); i++) {
-                    Toast.makeText(MainActivity.this,
-                            "ini " + listItem.get(i).getItemId(),
-                            Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(MainActivity.this, "sizenya " + listItem.size(), Toast.LENGTH_SHORT).show();
+//                for(int i=0; i<listItem.size(); i++) {
+//                    Toast.makeText(MainActivity.this,
+//                            "ini " + listItem.get(i).getItemId(),
+//                            Toast.LENGTH_SHORT).show();
+//                }
             }
 
             @Override

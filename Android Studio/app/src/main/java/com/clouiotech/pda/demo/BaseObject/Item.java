@@ -5,41 +5,35 @@ import com.google.gson.annotations.SerializedName;
  * Created by roka on 23/10/16.
  */
 public class Item {
-    public Item(String id, String code, String desc, String partNumber, String bar, String uomCode,
-                String stocks, boolean isActive) {
+    public Item(String id, String code, String desc) {
         this.itemId = id;
         this.itemCode = code;
         this.itemDescription = desc;
-        this.partNumber = partNumber;
-        this.barcode = bar;
-        this.uomCode = uomCode;
-        this.minStock = stocks;
-        this.activeFlag = isActive;
+//        this.partNumber = partNumber;
+//        this.barcode = bar;
+//        this.uomCode = uomCode;
+//        this.minStock = stocks;
+//        this.activeFlag = isActive;
     }
 
-    @SerializedName("item_id")
+    @SerializedName("A")
     private String itemId;
 
-    @SerializedName("item_code")
+    @SerializedName("B")
     private String itemCode;
 
-    @SerializedName("item_description")
+    @SerializedName("C")
     private String itemDescription;
 
-    @SerializedName("part_number")
-    private String partNumber;
 
-    @SerializedName("barcode")
-    private String barcode;
-
-    @SerializedName("uom_code")
-    private String uomCode;
-
-    @SerializedName("min_stock")
-    private String minStock;
-
-    @SerializedName("active_flag")
-    private boolean activeFlag;
+//    @SerializedName("uom_code")
+//    private String uomCode;
+//
+//    @SerializedName("min_stock")
+//    private String minStock;
+//
+//    @SerializedName("active_flag")
+//    private boolean activeFlag;
 
     public String getItemId() {
         return itemId;
@@ -52,26 +46,26 @@ public class Item {
     public String getItem_description() {
         return itemDescription;
     }
+//
+//    public String getPartNumber() {
+//        return partNumber;
+//    }
+//
+//    public String getBarcode() {
+//        return barcode;
+//    }
 
-    public String getPartNumber() {
-        return partNumber;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public String getUomCode() {
-        return uomCode;
-    }
-
-    public String getMinStock() {
-        return minStock;
-    }
-
-    public boolean getActiveFlag() {
-        return activeFlag;
-    }
+//    public String getUomCode() {
+//        return uomCode;
+//    }
+//
+//    public String getMinStock() {
+//        return minStock;
+//    }
+//
+//    public boolean getActiveFlag() {
+//        return activeFlag;
+//    }
 
     public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
@@ -85,23 +79,23 @@ public class Item {
         this.itemDescription = itemDescription;
     }
 
-    public void setActiveFlag(boolean activeFlag) {
-        this.activeFlag = activeFlag;
-    }
+//    public void setActiveFlag(boolean activeFlag) {
+//        this.activeFlag = activeFlag;
+//    }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
+//    public void setBarcode(String barcode) {
+//        this.barcode = barcode;
+//    }
 
-    public void setMinStock(String minStock) {
-        this.minStock = minStock;
-    }
+//    public void setMinStock(String minStock) {
+//        this.minStock = minStock;
+////    }
 
-    public void setPartNumber(String partNumber) {
-        this.partNumber = partNumber;
-    }
+//    public void setPartNumber(String partNumber) {
+//        this.partNumber = partNumber;
+//    }
 
-    public void setUomCode(String uomCode) {
-        this.uomCode = uomCode;
-    }
+//    public void setUomCode(String uomCode) {
+//        this.uomCode = uomCode;
+//    }
 }
