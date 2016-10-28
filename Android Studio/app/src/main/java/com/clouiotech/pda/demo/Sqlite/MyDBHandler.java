@@ -3,16 +3,21 @@ package com.clouiotech.pda.demo.Sqlite;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.text.format.DateFormat;
 
+import com.clouiotech.pda.demo.Activity.MainActivity.Callbacks;
+import com.clouiotech.pda.demo.BaseObject.Item;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyDBHandler extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
@@ -74,6 +79,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String DOWNLOAD_TABEL = "nama_tabel";
 
     private Context context;
+
+    private Callbacks mCallbacks = null;
 
 	public MyDBHandler(Context context, String name,
 	            SQLiteDatabase.CursorFactory factory, int version) {
@@ -274,6 +281,55 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_ORDER, null, values);
         db.close();
+    }
+
+    public void addDataOrderAndAsli(List<Item> listItem, Callbacks callbacks) {
+        // DELETE THE DATA FIRST BEFORE INSERTING
+        deleteAll(TABLE_ASLI);
+        deleteAll(TABLE_ORDER);
+
+        this.mCallbacks = callbacks;
+        Item item = null;
+
+        ContentValues values = new ContentValues();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        DatabaseUtils.InsertHelper insertOrderHelper = new DatabaseUtils.InsertHelper(db, TABLE_ORDER);
+        DatabaseUtils.InsertHelper insertAsliHelper = new DatabaseUtils.InsertHelper(db, TABLE_ASLI);
+        db.beginTransaction();
+        try {
+            for(int i = 0; i < listItem.size(); i++) {
+                item = listItem.get(i);
+                values.put(ORDER_KODE,item.getItemCode());
+                values.put(ORDER_JUMLAHDATA,String.valueOf(item.getQuantityAwal()));
+                values.put(ORDER_JUMLAHCEK,"0");
+                values.put(ORDER_WAREHOUSE,item.getWarehouseId());
+                values.put(ORDER_PERIOD,item.getPeriodName());
+                values.put(ORDER_GROUP,item.getGroupId());
+                values.put(ORDER_TGL,"");
+                values.put(ORDER_DESKRIPSI,item.getItemDescription());
+                values.put(ORDER_CATATAN,"");
+                values.put(ORDER_SELISIH, String.valueOf(getItemDifference(item.getQuantityAwal())));
+                //db.insert(TABLE_ORDER, null, values);
+                //db.insert(TABLE_ASLI, null, values);
+                insertAsliHelper.insert(values);
+                insertOrderHelper.insert(values);
+                values.clear();
+            }
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+
+        mCallbacks.onSuccess();
+    }
+
+    private int getItemDifference(int itemCount) {
+        if (itemCount <= 0) return 0;
+        else if (itemCount > 0) return (0-itemCount);
+
+        return 0;
     }
 
     public void addDataSetting(DataSetting listDataSetting) {

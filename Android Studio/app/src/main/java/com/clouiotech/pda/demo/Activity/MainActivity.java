@@ -2,6 +2,7 @@ package com.clouiotech.pda.demo.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,6 +16,9 @@ import android.widget.Toast;
 import com.clouiotech.pda.demo.BaseObject.GlobalVariable;
 import com.clouiotech.pda.demo.BaseObject.Item;
 import com.clouiotech.pda.demo.BaseObject.ItemResponse;
+import com.clouiotech.pda.demo.Sqlite.DataAsli;
+import com.clouiotech.pda.demo.Sqlite.DataOrder;
+import com.clouiotech.pda.demo.Sqlite.MyDBHandler;
 import com.clouiotech.pda.demo.restclient.BaseRestClient;
 import com.clouiotech.pda.demo.restinterface.BaseRestInterface;
 import com.clouiotech.pda.demoExample.R;
@@ -125,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int statusCode = response.code();
                 List<Item> listItem = response.body().getListItem();
                 Toast.makeText(MainActivity.this, "sizenya " + listItem.size(), Toast.LENGTH_SHORT).show();
+                addDataToDatabase(listItem);
 //                for(int i=0; i<listItem.size(); i++) {
 //                    Toast.makeText(MainActivity.this,
 //                            "ini " + listItem.get(i).getItemId(),
@@ -138,5 +143,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "On Failure " + error, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void addDataToDatabase(final List<Item> listItem) {
+        final Callbacks databaseCallback = new Callbacks() {
+            @Override
+            public void onSuccess() {
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "Database Write Success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                        intent.putExtra(GlobalVariable.INTENT_EXTRA_PAGE, GlobalVariable.PAGE_TO_STOCK_SCAN_FRAGMENT);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onError() {
+                //Toast.makeText(MainActivity.this, "Download and write success", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        Runnable databaseRunnable = new Runnable() {
+            @Override
+            public void run() {
+                MyDBHandler databaseHandler = new MyDBHandler(MainActivity.this, null, null, 1);
+                databaseHandler.addDataOrderAndAsli(listItem, databaseCallback);
+            }
+        };
+
+        new Thread(databaseRunnable).start();
+    }
+
+    public interface Callbacks {
+        void onSuccess();
+        void onError();
     }
 }

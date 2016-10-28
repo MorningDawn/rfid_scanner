@@ -5,97 +5,84 @@ import com.google.gson.annotations.SerializedName;
  * Created by roka on 23/10/16.
  */
 public class Item {
-    public Item(String id, String code, String desc) {
-        this.itemId = id;
+    public Item(String code, int quantity, String warehouse, String period, String group,
+                String itemDesc) {
         this.itemCode = code;
-        this.itemDescription = desc;
-//        this.partNumber = partNumber;
-//        this.barcode = bar;
-//        this.uomCode = uomCode;
-//        this.minStock = stocks;
-//        this.activeFlag = isActive;
+        this.quantityAwal = quantity;
+        this.warehouseId = warehouse;
+        this.periodName = period;
+        this.groupId = group;
+        this.itemDescription = itemDesc;
     }
 
     @SerializedName("A")
-    private String itemId;
-
-    @SerializedName("B")
     private String itemCode;
 
+    @SerializedName("B")
+    private int quantityAwal;
+
     @SerializedName("C")
+    private String warehouseId;
+
+    @SerializedName("D")
+    private String periodName;
+
+    @SerializedName("E")
+    private String groupId;
+
+    @SerializedName("F")
     private String itemDescription;
 
 
-//    @SerializedName("uom_code")
-//    private String uomCode;
-//
-//    @SerializedName("min_stock")
-//    private String minStock;
-//
-//    @SerializedName("active_flag")
-//    private boolean activeFlag;
+    // GET METHOD
+    public int getQuantityAwal() {
+        return quantityAwal;
+    }
 
-    public String getItemId() {
-        return itemId;
+    public String getGroupId() {
+        return groupId;
     }
 
     public String getItemCode() {
         return itemCode;
     }
 
-    public String getItem_description() {
+    public String getItemDescription() {
         return itemDescription;
     }
-//
-//    public String getPartNumber() {
-//        return partNumber;
-//    }
-//
-//    public String getBarcode() {
-//        return barcode;
-//    }
 
-//    public String getUomCode() {
-//        return uomCode;
-//    }
-//
-//    public String getMinStock() {
-//        return minStock;
-//    }
-//
-//    public boolean getActiveFlag() {
-//        return activeFlag;
-//    }
+    public String getPeriodName() {
+        return periodName;
+    }
+
+    public String getWarehouseId() {
+        return warehouseId;
+    }
+
+    // SET METHOD
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
 
     public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
     }
 
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
     }
 
-//    public void setActiveFlag(boolean activeFlag) {
-//        this.activeFlag = activeFlag;
-//    }
+    public void setPeriodName(String periodName) {
+        this.periodName = periodName;
+    }
 
-//    public void setBarcode(String barcode) {
-//        this.barcode = barcode;
-//    }
+    public void setQuantityAwal(int quantityAwal) {
+        this.quantityAwal = quantityAwal;
+    }
 
-//    public void setMinStock(String minStock) {
-//        this.minStock = minStock;
-////    }
-
-//    public void setPartNumber(String partNumber) {
-//        this.partNumber = partNumber;
-//    }
-
-//    public void setUomCode(String uomCode) {
-//        this.uomCode = uomCode;
-//    }
+    public void setWarehouseId(String warehouseId) {
+        this.warehouseId = warehouseId;
+    }
 }
+
+
