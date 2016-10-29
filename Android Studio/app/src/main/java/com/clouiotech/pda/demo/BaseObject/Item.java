@@ -5,103 +5,84 @@ import com.google.gson.annotations.SerializedName;
  * Created by roka on 23/10/16.
  */
 public class Item {
-    public Item(String id, String code, String desc, String partNumber, String bar, String uomCode,
-                String stocks, boolean isActive) {
-        this.itemId = id;
+    public Item(String code, int quantity, String warehouse, String period, String group,
+                String itemDesc) {
         this.itemCode = code;
-        this.itemDescription = desc;
-        this.partNumber = partNumber;
-        this.barcode = bar;
-        this.uomCode = uomCode;
-        this.minStock = stocks;
-        this.activeFlag = isActive;
+        this.quantityAwal = quantity;
+        this.warehouseId = warehouse;
+        this.periodName = period;
+        this.groupId = group;
+        this.itemDescription = itemDesc;
     }
 
-    @SerializedName("item_id")
-    private String itemId;
-
-    @SerializedName("item_code")
+    @SerializedName("A")
     private String itemCode;
 
-    @SerializedName("item_description")
+    @SerializedName("B")
+    private int quantityAwal;
+
+    @SerializedName("C")
+    private String warehouseId;
+
+    @SerializedName("D")
+    private String periodName;
+
+    @SerializedName("E")
+    private String groupId;
+
+    @SerializedName("F")
     private String itemDescription;
 
-    @SerializedName("part_number")
-    private String partNumber;
 
-    @SerializedName("barcode")
-    private String barcode;
+    // GET METHOD
+    public int getQuantityAwal() {
+        return quantityAwal;
+    }
 
-    @SerializedName("uom_code")
-    private String uomCode;
-
-    @SerializedName("min_stock")
-    private String minStock;
-
-    @SerializedName("active_flag")
-    private boolean activeFlag;
-
-    public String getItemId() {
-        return itemId;
+    public String getGroupId() {
+        return groupId;
     }
 
     public String getItemCode() {
         return itemCode;
     }
 
-    public String getItem_description() {
+    public String getItemDescription() {
         return itemDescription;
     }
 
-    public String getPartNumber() {
-        return partNumber;
+    public String getPeriodName() {
+        return periodName;
     }
 
-    public String getBarcode() {
-        return barcode;
+    public String getWarehouseId() {
+        return warehouseId;
     }
 
-    public String getUomCode() {
-        return uomCode;
-    }
-
-    public String getMinStock() {
-        return minStock;
-    }
-
-    public boolean getActiveFlag() {
-        return activeFlag;
+    // SET METHOD
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
-
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
     }
 
-    public void setActiveFlag(boolean activeFlag) {
-        this.activeFlag = activeFlag;
+    public void setPeriodName(String periodName) {
+        this.periodName = periodName;
     }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
+    public void setQuantityAwal(int quantityAwal) {
+        this.quantityAwal = quantityAwal;
     }
 
-    public void setMinStock(String minStock) {
-        this.minStock = minStock;
-    }
-
-    public void setPartNumber(String partNumber) {
-        this.partNumber = partNumber;
-    }
-
-    public void setUomCode(String uomCode) {
-        this.uomCode = uomCode;
+    public void setWarehouseId(String warehouseId) {
+        this.warehouseId = warehouseId;
     }
 }
+
+
