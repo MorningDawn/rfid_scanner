@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Thread(databaseRunnable).start();
     }
 
-    public interface Callbacks {
+    public static interface Callbacks {
         void onSuccess();
         void onError();
     }

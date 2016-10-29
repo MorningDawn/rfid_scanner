@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="d46241fa21079e9cd9408592ad3b427d504bee18">
+        sha1="39df99030934e389c9be2b4e72917f4a658534b6">
         <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_9c6294597be4d24407ecabe37fe4ad63d5123c67/classes.dex" />
     </item>
     <item
@@ -160,7 +160,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="48dfb3fae09c661bdf85b7e171c8a3b425a17d21">
+        sha1="27d0b57ddb616e71203ca19dfcd633707a6f9a44">
         <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_0cbd3217f6542d1ee402ac3f3c2310e12186a5b3/classes.dex" />
     </item>
     <item

@@ -11,7 +11,10 @@ import android.os.Environment;
 import android.text.format.DateFormat;
 
 import com.clouiotech.pda.demo.Activity.MainActivity.Callbacks;
+import com.clouiotech.pda.demo.Fragment.StockScanFragment.DatabaseResponseCallback;
+import com.clouiotech.pda.demo.BaseObject.EpcObject;
 import com.clouiotech.pda.demo.BaseObject.Item;
+import com.clouiotech.pda.demo.Fragment.StockScanFragment;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -330,6 +333,49 @@ public class MyDBHandler extends SQLiteOpenHelper {
         else if (itemCount > 0) return (0-itemCount);
 
         return 0;
+    }
+
+    // TODO DISINI
+    public void getDataAsli(DatabaseResponseCallback callback) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null, null, null, null, null, null);
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+
+        List<EpcObject> listEpc= new ArrayList<EpcObject>();
+        while(cursor.moveToNext()) {
+            int orderCodeIndex = cursor.getColumnIndex(ORDER_KODE);
+            int orderJumlahCekIndex = cursor.getColumnIndex(ORDER_JUMLAHCEK);
+            int orderWarehouseIndex = cursor.getColumnIndex(ORDER_WAREHOUSE);
+            int ordedJumlahDataIndex = cursor.getColumnIndex(ORDER_JUMLAHDATA);
+            int orderPeriodIndex = cursor.getColumnIndex(ORDER_PERIOD);
+            int orderGroupIndex = cursor.getColumnIndex(ORDER_GROUP);
+            int orderTanggalIndex = cursor.getColumnIndex(ORDER_TGL);
+            int orderDeskripsiIndex = cursor.getColumnIndex(ORDER_DESKRIPSI);
+            int orderCatatanIndex = cursor.getColumnIndex(ORDER_CATATAN);
+            int orderSelisihIndex = cursor.getColumnIndex(ORDER_SELISIH);
+
+            String orderCode= cursor.getString(orderCodeIndex);
+            String orderJumlahCek = cursor.getString(orderJumlahCekIndex);
+            String orderWarehouse = cursor.getString(orderWarehouseIndex);
+            String orderJumlahData = cursor.getString(ordedJumlahDataIndex);
+            String orderPeriod = cursor.getString(orderPeriodIndex);
+            String orderGroup = cursor.getString(orderGroupIndex);
+            String orderTanggal = cursor.getString(orderTanggalIndex);
+            String orderDeskripsi = cursor.getString(orderDeskripsiIndex);
+            String orderCatatan = cursor.getString(orderCatatanIndex);
+            String orderSelisih= cursor.getString(orderSelisihIndex);
+
+            //Item item = new Item(orderCode, Integer.parseInt(orderJumlahData), orderWarehouse, orderPeriod,
+//                    orderGroup, orderDeskripsi);
+            EpcObject item = new EpcObject(orderCode, orderDeskripsi, Integer.parseInt(orderJumlahData),
+                    0);
+            listEpc.add(item);
+            item = null;
+        }
+
+        callback.onData(listEpc);
     }
 
     public void addDataSetting(DataSetting listDataSetting) {

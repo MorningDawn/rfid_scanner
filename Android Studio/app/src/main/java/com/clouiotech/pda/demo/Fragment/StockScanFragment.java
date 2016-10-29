@@ -8,10 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.clouiotech.pda.demo.Activity.MainActivity;
 import com.clouiotech.pda.demo.Adapter.EpcScanAdapter;
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
+import com.clouiotech.pda.demo.Sqlite.MyDBHandler;
 import com.clouiotech.pda.demoExample.R;
+import com.clouiotech.pda.rfid.EPCModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,20 +50,51 @@ public class StockScanFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_recycler_view, null, false);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.rv_recycler);
 
-        Random r = new Random();
-        for (int i = 0; i < 300; i++) {
-            int quantity = r.nextInt(300);
-            int physic = r.nextInt(300);
-            String id = "EPC " + i;
-            String desc = "EPC Desc" + i;
-            mListData.add(new EpcObject(id, desc, quantity, physic));
-        }
 
         mRecyclerView.setLayoutManager(mManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.notifyDataSetChanged();
+        Runnable databaseRunnable = new Runnable() {
+            @Override
+            public void run() {
+                MyDBHandler handler = new MyDBHandler(getActivity(), null, null, 1);
+                handler.getDataAsli(callback);
 
+            }
+        };
+
+        new Thread(databaseRunnable).start();
         return v;
     }
+
+    private Runnable notifyOnUiThread = new Runnable() {
+        @Override
+        public void run() {
+            mAdapter.notifyDataSetChanged();
+            Toast.makeText(getActivity(), "Refresh the data " + mListData.size() , Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private DatabaseResponseCallback callback = new DatabaseResponseCallback() {
+        @Override
+        public void onData(List<EpcObject> listItem) {
+            mListData.clear();
+            mListData.addAll(listItem);
+            getActivity().runOnUiThread(notifyOnUiThread);
+        }
+
+        @Override
+        public void onSuccess() {
+
+        }
+
+        @Override
+        public void onError() {
+
+        }
+    };
+
+    public static interface DatabaseResponseCallback extends MainActivity.Callbacks {
+        void onData(List<EpcObject> listItem);
+    };
 }
