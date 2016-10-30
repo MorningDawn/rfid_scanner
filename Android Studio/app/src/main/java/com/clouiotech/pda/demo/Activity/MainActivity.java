@@ -130,11 +130,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 List<Item> listItem = response.body().getListItem();
                 Toast.makeText(MainActivity.this, "sizenya " + listItem.size(), Toast.LENGTH_SHORT).show();
                 addDataToDatabase(listItem);
-//                for(int i=0; i<listItem.size(); i++) {
-//                    Toast.makeText(MainActivity.this,
-//                            "ini " + listItem.get(i).getItemId(),
-//                            Toast.LENGTH_SHORT).show();
-//                }
             }
 
             @Override
@@ -153,9 +148,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         Toast.makeText(MainActivity.this, "Database Write Success", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
-                        intent.putExtra(GlobalVariable.INTENT_EXTRA_PAGE, GlobalVariable.PAGE_TO_STOCK_SCAN_FRAGMENT);
-                        startActivity(intent);
                     }
                 });
             }
