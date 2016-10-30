@@ -1,5 +1,8 @@
 package com.clouiotech.pda.demo.Activity;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +13,7 @@ import com.clouiotech.pda.demo.Fragment.ScanHistoryFragment;
 import com.clouiotech.pda.demo.Fragment.StockScanFragment;
 import com.clouiotech.pda.demoExample.R;
 
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,6 +76,26 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_recycler_view, menu);
+        menu.findItem(R.id.menu_search).setVisible(true);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+            MenuItem searchItem = menu.findItem(R.id.menu_search);
+            SearchView search = (SearchView) searchItem.getActionView();
+            search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Toast.makeText(RecyclerViewActivity.this, "Text Submitted " + query, Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return true;
+                }
+            });
+        }
         return true;
     }
 

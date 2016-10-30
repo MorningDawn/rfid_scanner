@@ -58,6 +58,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.clouiotech.pda.demo.Activity.RecyclerViewActivity" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" >
+            </meta-data>
         </activity>
         <activity android:name="com.clouiotech.pda.demo.Activity.AdminMainActivity" />
         <!-- NEW UI ACTIVITY ENDS HERE -->
