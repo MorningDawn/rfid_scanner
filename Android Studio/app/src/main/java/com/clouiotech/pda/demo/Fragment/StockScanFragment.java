@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.clouiotech.pda.demo.Activity.MainActivity;
+import com.clouiotech.pda.demo.Activity.RecyclerViewActivity;
 import com.clouiotech.pda.demo.Adapter.EpcScanAdapter;
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
 import com.clouiotech.pda.demo.Sqlite.MyDBHandler;
@@ -27,6 +28,8 @@ import com.clouiotech.pda.rfid.EPCModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by roka on 28/07/16.
@@ -37,6 +40,7 @@ public class StockScanFragment extends Fragment {
     private List<EpcObject> mListDataHelper = new ArrayList<>();
     private LinearLayoutManager mManager;
     private RecyclerView mRecyclerView;
+    private MyDBHandler mMyDBHandler = null;
 
     public static StockScanFragment newInstance(){
         StockScanFragment fragment = new StockScanFragment();
@@ -49,6 +53,7 @@ public class StockScanFragment extends Fragment {
 
         mManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mAdapter = new EpcScanAdapter(mListData, getActivity());
+        mMyDBHandler = new MyDBHandler(getActivity(), null, null, 1);
 
     }
 
@@ -65,9 +70,7 @@ public class StockScanFragment extends Fragment {
         Runnable databaseRunnable = new Runnable() {
             @Override
             public void run() {
-                MyDBHandler handler = new MyDBHandler(getActivity(), null, null, 1);
-                handler.getDataAsli(callback);
-
+                mMyDBHandler.getDataAsli(callback);
             }
         };
 
@@ -79,7 +82,6 @@ public class StockScanFragment extends Fragment {
         @Override
         public void run() {
             mAdapter.notifyDataSetChanged();
-            Toast.makeText(getActivity(), "Refresh the data " + mListData.size() , Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -101,6 +103,20 @@ public class StockScanFragment extends Fragment {
 
         }
     };
+
+    public void refreshDataByTextQuery(String text) {
+        Toast.makeText(getActivity(), "Text Submitted in fragment " + text, Toast.LENGTH_SHORT).show();
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9 ]");
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            Toast.makeText(getActivity(), "Ada spesial karakter", Toast.LENGTH_SHORT).show();
+        } else {
+            String[] arrayStringAggregator = text.split(" ");
+            mMyDBHandler.getDataAsli(callback, arrayStringAggregator);
+        }
+    }
+
 
     public static interface DatabaseResponseCallback extends MainActivity.Callbacks {
         void onData(List<EpcObject> listItem);

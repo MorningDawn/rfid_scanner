@@ -60,6 +60,11 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_card :

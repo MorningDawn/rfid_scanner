@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
@@ -18,13 +19,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
  * Created by roka on 28/07/16.
  */
 public class RecyclerViewActivity extends ActionBarActivity implements View.OnClickListener {
-
+    private Fragment mFragment = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,7 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
             case GlobalVariable.PAGE_TO_STOCK_SCAN_FRAGMENT :
                 getSupportActionBar().setTitle(getResources().getString(R.string.fragment_stock_scan));
                 StockScanFragment stockScanFragment = StockScanFragment.newInstance();
+                mFragment = stockScanFragment;
                 fr.replace(R.id.ll_activity, stockScanFragment);
 
                 break;
@@ -51,6 +55,7 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
             case GlobalVariable.PAGE_TO_HISTORY_SCAN_FRAGMENT :
                 getSupportActionBar().setTitle(getResources().getString(R.string.fragment_scan_history));
                 ScanHistoryFragment scanHistoryFragment = ScanHistoryFragment.newInstance();
+                mFragment = scanHistoryFragment;
                 fr.replace(R.id.ll_activity, scanHistoryFragment);
                 break;
 
@@ -77,25 +82,9 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_recycler_view, menu);
         menu.findItem(R.id.menu_search).setVisible(true);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
-            MenuItem searchItem = menu.findItem(R.id.menu_search);
-            SearchView search = (SearchView) searchItem.getActionView();
-            search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
-            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    Toast.makeText(RecyclerViewActivity.this, "Text Submitted " + query, Toast.LENGTH_SHORT).show();
-                    return true;
-                }
+        initActionBarSearchView(menu);
 
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    return true;
-                }
-            });
-        }
         return true;
     }
 
@@ -116,5 +105,48 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
         }
 
         return true;
+    }
+
+    private void searchViewTextSubmitted(String text) {
+        if (mFragment instanceof  StockScanFragment) {
+            ((StockScanFragment) mFragment).refreshDataByTextQuery(text);
+        }
+    }
+
+    private void initActionBarSearchView(Menu menu) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+            final MenuItem searchItem = menu.findItem(R.id.menu_search);
+            final SearchView search = (SearchView) searchItem.getActionView();
+            search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    searchViewTextSubmitted(query);
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+
+                    return true;
+                }
+            });
+
+            ImageView searchViewCloseButton = (ImageView) search.findViewById(R.id.search_close_btn);
+            searchViewCloseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditText et = (EditText) search.findViewById(R.id.search_src_text);
+                    et.setText("");
+
+                    search.onActionViewCollapsed();
+                    searchItem.collapseActionView();
+
+                    searchViewTextSubmitted("");
+                }
+            });
+        }
     }
 }

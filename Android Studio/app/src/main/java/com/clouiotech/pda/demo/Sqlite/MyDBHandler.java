@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.text.format.DateFormat;
+import android.util.Log;
 
 import com.clouiotech.pda.demo.Activity.MainActivity.Callbacks;
 import com.clouiotech.pda.demo.Fragment.StockScanFragment.DatabaseResponseCallback;
@@ -343,7 +344,37 @@ public class MyDBHandler extends SQLiteOpenHelper {
         // Parse the cursor
         if (!cursor.moveToFirst()) return;
 
-        List<EpcObject> listEpc= new ArrayList<EpcObject>();
+        List<EpcObject> listEpc= parseCursorToListItemDataAsli(cursor);
+        callback.onData(listEpc);
+    }
+
+    public void getDataAsli(DatabaseResponseCallback callback, String aggregator) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null,  ORDER_DESKRIPSI + " LIKE \"%" + aggregator + "%\"" , null, null, null, null);
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        callback.onData(listEpc);
+    }
+
+    public void getDataAsli(DatabaseResponseCallback callback, String[] queryAggregator) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectionQuery = dataAsliSelectionQueryBuilder(queryAggregator);
+        Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
+        Log.d("FAJAR", "seelction query " + selectionQuery);
+        for (String string : queryAggregator) {
+            Log.d("FAJAR", string);
+        }
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        callback.onData(listEpc);
+    }
+
+    private List<EpcObject> parseCursorToListItemDataAsli(Cursor cursor) {
+        List<EpcObject> listEpc = new ArrayList<>();
         while(cursor.moveToNext()) {
             int orderCodeIndex = cursor.getColumnIndex(ORDER_KODE);
             int orderJumlahCekIndex = cursor.getColumnIndex(ORDER_JUMLAHCEK);
@@ -375,7 +406,28 @@ public class MyDBHandler extends SQLiteOpenHelper {
             item = null;
         }
 
-        callback.onData(listEpc);
+        return listEpc;
+    }
+
+    private String dataAsliSelectionQueryBuilder(String[] arguments) {
+        int size = arguments.length;
+        if (size == 1) return ORDER_DESKRIPSI + " LIKE \"%" + arguments[0] +"%\" OR " +
+                ORDER_KODE + " LIKE \"%" + arguments[0] +"%\"";
+        else {
+            String selectionQuery = "";
+            for (int i=0; i < size; i++) {
+                String argument = arguments[i];
+                if(i != size -1) {
+                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
+                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
+                } else {
+                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
+                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\"" ;
+                }
+            }
+
+            return selectionQuery;
+        }
     }
 
     public void addDataSetting(DataSetting listDataSetting) {
