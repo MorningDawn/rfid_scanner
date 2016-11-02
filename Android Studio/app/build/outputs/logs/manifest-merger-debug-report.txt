@@ -17,8 +17,9 @@ ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidMa
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:1:11-69
 uses-sdk
 ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:6:5-8:41
-MERGED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:design:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:support-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/AndroidManifest.xml:5:5-43
 MERGED from [com.android.support:recyclerview-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/AndroidManifest.xml:20:5-43
@@ -98,8 +99,9 @@ ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidMa
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:41:22-77
 application
 ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:43:5-172:19
-MERGED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:design:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/AndroidManifest.xml:7:5-20
 	android:label

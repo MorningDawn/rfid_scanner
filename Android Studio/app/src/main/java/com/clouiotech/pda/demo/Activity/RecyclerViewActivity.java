@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -28,11 +29,13 @@ import android.widget.Toast;
  */
 public class RecyclerViewActivity extends ActionBarActivity implements View.OnClickListener {
     private Fragment mFragment = null;
+    private FloatingActionButton mFabSwitch = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_scan_uhf);
+
+        mFabSwitch = (FloatingActionButton) findViewById(R.id.fab_switch);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,6 +75,10 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
             case android.R.id.home : {
                     finish();
             } break;
+
+            case R.id.fab_switch : {
+                Toast.makeText(RecyclerViewActivity.this, "FAB CLicked", Toast.LENGTH_SHORT).show();
+            }
 
             default :
                 break;

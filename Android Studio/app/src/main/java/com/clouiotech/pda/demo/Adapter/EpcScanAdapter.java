@@ -6,25 +6,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
 import com.clouiotech.pda.demoExample.R;
-import com.clouiotech.pda.rfid.EPCModel;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 /**
  * Created by roka on 29/07/16.
  */
-public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHolderEpc> implements View.OnClickListener {
+public class EpcScanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
     private List<EpcObject> mListData;
     private Context mContext;
+
+    private int VIEW_DUMMY = 0;
+    private int VIEW_ITEM = 1;
 
     public EpcScanAdapter(List<EpcObject> listData, Context context) {
         this.mListData = listData;
@@ -32,15 +31,16 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
     }
 
     @Override
-    public ViewHolderEpc onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_epc_scan, null);
-
         return new ViewHolderEpc(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderEpc holder, int position) {
-        EpcObject epc = mListData.get(position);
+    public void onBindViewHolder(RecyclerView.ViewHolder vh, int position) {
+        ViewHolderEpc holder = (ViewHolderEpc) vh;
+
+        EpcObject epc = getDataByPosition(position);
 
         holder.tvEpcId.setText(epc.getId());
         holder.tvEpcDesc.setText(epc.getDesc());
@@ -61,7 +61,12 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if (position == 0) return VIEW_DUMMY;
+        else return VIEW_ITEM;
+    }
+
+    private EpcObject getDataByPosition(int position) {
+        return mListData.get(position); // Already take 1 space for dummy item
     }
 
     @Override
@@ -111,6 +116,12 @@ public class EpcScanAdapter extends RecyclerView.Adapter<EpcScanAdapter.ViewHold
             tvEpcQuantity = (TextView) v.findViewById(R.id.tv_quantity);
             tvEpcPhysic = (TextView) v.findViewById(R.id.tv_physic);
             tvEpcDelta = (TextView) v.findViewById(R.id.tv_delta);
+        }
+    }
+
+    public class ViewHolderEpcDummy extends RecyclerView.ViewHolder {
+        public ViewHolderEpcDummy(View v) {
+            super(v);
         }
     }
 

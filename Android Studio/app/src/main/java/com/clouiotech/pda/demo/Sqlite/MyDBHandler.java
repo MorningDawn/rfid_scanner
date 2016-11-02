@@ -12,6 +12,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.clouiotech.pda.demo.Activity.MainActivity.Callbacks;
+import com.clouiotech.pda.demo.BaseObject.SearchQueryAggregator;
 import com.clouiotech.pda.demo.Fragment.StockScanFragment.DatabaseResponseCallback;
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
 import com.clouiotech.pda.demo.BaseObject.Item;
@@ -362,7 +363,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectionQuery = dataAsliSelectionQueryBuilder(queryAggregator);
         Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
-        Log.d("FAJAR", "seelction query " + selectionQuery);
+        Log.d("FAJAR", "seelction query " + selectionQuery + " " + cursor.getCount());
         for (String string : queryAggregator) {
             Log.d("FAJAR", string);
         }
@@ -373,8 +374,24 @@ public class MyDBHandler extends SQLiteOpenHelper {
         callback.onData(listEpc);
     }
 
+    public void getDataAsli(DatabaseResponseCallback callback, SearchQueryAggregator searchQueryAggregator) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectionQuery = dataAsliSelectionQueryBuilder(searchQueryAggregator);
+        String innerSelectQuery = dataAsliInnerSelectQueryBuilder(searchQueryAggregator);
+        //Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
+        String wholeQuery = "SELECT * FROM (" + innerSelectQuery +")as A WHERE "+ selectionQuery;
+        Cursor cursor = db.rawQuery(wholeQuery, null);
+        Log.d("FAJAR", "seelction query " + wholeQuery + " " + cursor.getCount());
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        callback.onData(listEpc);
+    }
+
     private List<EpcObject> parseCursorToListItemDataAsli(Cursor cursor) {
         List<EpcObject> listEpc = new ArrayList<>();
+        cursor.moveToPosition(-1);
         while(cursor.moveToNext()) {
             int orderCodeIndex = cursor.getColumnIndex(ORDER_KODE);
             int orderJumlahCekIndex = cursor.getColumnIndex(ORDER_JUMLAHCEK);
@@ -405,14 +422,18 @@ public class MyDBHandler extends SQLiteOpenHelper {
             listEpc.add(item);
             item = null;
         }
-
+        Log.d("FAJAR", "listepc " + listEpc.size());
         return listEpc;
     }
 
     private String dataAsliSelectionQueryBuilder(String[] arguments) {
         int size = arguments.length;
-        if (size == 1) return ORDER_DESKRIPSI + " LIKE \"%" + arguments[0] +"%\" OR " +
-                ORDER_KODE + " LIKE \"%" + arguments[0] +"%\"";
+        if (size == 1) {
+            Log.d("FAJAR", "argument " + arguments[0]);
+
+            return ORDER_DESKRIPSI + " LIKE \"%" + arguments[0] +"%\" OR " +
+                    ORDER_KODE + " LIKE \"%" + arguments[0] +"%\"";
+        }
         else {
             String selectionQuery = "";
             for (int i=0; i < size; i++) {
@@ -428,6 +449,119 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
             return selectionQuery;
         }
+    }
+
+    private String dataAsliInnerSelectQueryBuilder(SearchQueryAggregator searchQueryAggregator) {
+        List<String> minusOperation = searchQueryAggregator.getMinusOperation();
+        String selectionQuery = "";
+
+        if(minusOperation == null || minusOperation.size() == 0) {
+            return TABLE_ORDER;
+        }
+
+        String innerSelect = "SELECT * FROM " + TABLE_ORDER + " WHERE ";
+        if (minusOperation.size() == 1) {
+            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " NOT LIKE \"%" + minusOperation.get(0) +"%\" AND " +
+                    ORDER_KODE + " NOT LIKE \"%" + minusOperation.get(0) +"%\" ";
+
+        } else if (minusOperation.size() > 1) {
+            for (int i=0; i < minusOperation.size(); i++) {
+                String argument = minusOperation.get(i);
+                if(argument != "") {
+                    if(i != minusOperation.size() -1) {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " NOT LIKE \"%"+argument+"%\" AND ";
+                        selectionQuery = selectionQuery + ORDER_KODE + " NOT LIKE \"%"+argument+"%\" AND ";
+                    } else {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " NOT LIKE \"%"+argument + "%\" AND " ;
+                        selectionQuery = selectionQuery + ORDER_KODE + " NOT LIKE \"%"+argument + "%\"" ;
+                    }
+                }
+            }
+        }
+
+        return innerSelect + selectionQuery;
+    }
+
+    private String dataAsliSelectionQueryBuilder(SearchQueryAggregator searchQueryAggregator) {
+        // CHECK NORMAL OPERATION
+        List<String> normalOperation = searchQueryAggregator.getNormalOperation();
+        List<String> quoteOperation = searchQueryAggregator.getQuoteOperation();
+        List<String> minusOperation = searchQueryAggregator.getMinusOperation();
+        String selectionQuery = "";
+
+
+        if (normalOperation.size() == 1 && normalOperation.get(0) != "") {
+            Log.d("FAJAR", "masuk 1");
+            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE \"%" + normalOperation.get(0) +"%\" OR " +
+                    ORDER_KODE + " LIKE \"%" + normalOperation.get(0) +"%\" ";
+
+        } else if (normalOperation.size() > 1) {
+            Log.d("FAJAR", "masuk 1 more");
+            for (int i=0; i < normalOperation.size(); i++) {
+                String argument = normalOperation.get(i);
+                if(argument != null) {
+                    if(i != normalOperation.size() -1) {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
+                    } else {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\"" ;
+                    }
+                }
+            }
+        }
+
+        // CHECK QUOTE OPERATION
+        if(normalOperation != null && normalOperation.size() != 0) {
+            if(normalOperation.get(0) != "") {
+                selectionQuery +=" OR ";
+            }
+        }
+
+        if (quoteOperation.size() == 1 && quoteOperation.get(0) != "") {
+            Log.d("FAJAR", "masuk 1 quote");
+            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE \"%" + quoteOperation.get(0) +"%\" OR " +
+                    ORDER_KODE + " LIKE \"%" + quoteOperation.get(0) +"%\" ";
+
+        } else if (quoteOperation.size() > 1) {
+            Log.d("FAJAR", "masuk 1 qupte more");
+            for (int i=0; i < quoteOperation.size(); i++) {
+                String argument = quoteOperation.get(i);
+                if(argument != "") {
+                    if(i != quoteOperation.size() -1) {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
+                    } else {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\" " ;
+                    }
+                }
+            }
+        }
+
+        // CHECK MINUS OPERATION
+//        if (quoteOperation != null || normalOperation != null) {
+//            selectionQuery += " AND ";
+//        }
+//
+//        if (minusOperation.size() == 1) {
+//            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE NOT \"%" + minusOperation.get(0) +"%\" AND " +
+//                    ORDER_KODE + " LIKE NOT \"%" + minusOperation.get(0) +"%\" ";
+//
+//        } else if (minusOperation.size() > 1) {
+//            for (int i=0; i < minusOperation.size(); i++) {
+//                String argument = minusOperation.get(i);
+//                if(i != minusOperation.size() -1) {
+//                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE NOT \"%"+argument+"%\" AND ";
+//                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE NOT \"%"+argument+"%\" AND ";
+//                } else {
+//                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE NOT \"%"+argument + "%\" AND " ;
+//                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE NOT \"%"+argument + "%\"" ;
+//                }
+//            }
+//        }
+        Log.d("FAJAR", "selectionQuery " + selectionQuery);
+        return selectionQuery;
     }
 
     public void addDataSetting(DataSetting listDataSetting) {

@@ -21,6 +21,7 @@ import com.clouiotech.pda.demo.Activity.MainActivity;
 import com.clouiotech.pda.demo.Activity.RecyclerViewActivity;
 import com.clouiotech.pda.demo.Adapter.EpcScanAdapter;
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
+import com.clouiotech.pda.demo.BaseObject.SearchQueryAggregator;
 import com.clouiotech.pda.demo.Sqlite.MyDBHandler;
 import com.clouiotech.pda.demoExample.R;
 import com.clouiotech.pda.rfid.EPCModel;
@@ -110,7 +111,8 @@ public class StockScanFragment extends Fragment {
         Matcher matcher = pattern.matcher(text);
 
         if (matcher.find()) {
-            Toast.makeText(getActivity(), "Ada spesial karakter", Toast.LENGTH_SHORT).show();
+            SearchQueryAggregator searchQueryAggregator = new SearchQueryAggregator(text);
+            mMyDBHandler.getDataAsli(callback, searchQueryAggregator);
         } else {
             String[] arrayStringAggregator = text.split(" ");
             mMyDBHandler.getDataAsli(callback, arrayStringAggregator);
