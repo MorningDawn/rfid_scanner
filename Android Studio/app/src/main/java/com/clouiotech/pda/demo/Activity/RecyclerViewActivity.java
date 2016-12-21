@@ -36,6 +36,7 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
         setContentView(R.layout.activity_scan_uhf);
 
         mFabSwitch = (FloatingActionButton) findViewById(R.id.fab_switch);
+        mFabSwitch.setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -154,6 +155,13 @@ public class RecyclerViewActivity extends ActionBarActivity implements View.OnCl
                     searchViewTextSubmitted("");
                 }
             });
+        }
+    }
+
+    public void saveEpcItemToDatabase(int scanId, String epcRawCode) {
+        if(!(mFragment instanceof StockScanFragment)) return;
+        else {
+            ((StockScanFragment) mFragment).saveScanItemToDatabaseInFragment(scanId, epcRawCode);
         }
     }
 }

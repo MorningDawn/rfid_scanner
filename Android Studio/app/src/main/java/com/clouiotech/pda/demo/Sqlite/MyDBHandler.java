@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.telecom.Call;
 import android.text.format.DateFormat;
 import android.util.Log;
 
@@ -32,6 +33,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final String TABLE_TEMP = "temp_code";
     private static final String TABLE_DOWNLOAD = "setting";
     private static final String TABLE_ASLI = "data_asli";
+    private static final String TABLE_EPC_RAW = "epc_raw";
 
     public static final String REPORT_RECID = "rec_id";
     public static final String REPORT_KODE = "kode_barang";
@@ -82,6 +84,16 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String DOWNLOAD_FILTER = "filter";
     public static final String DOWNLOAD_QUERY = "query";
     public static final String DOWNLOAD_TABEL = "nama_tabel";
+
+    // SAVE SCAN TO DATABASE TABLE NAME
+    public static final String SAVE_ID = "id";
+    public static final String SAVE_ALIAS = "alias";
+
+
+    // SAVE SCAN TO DATABASE EPC RAW TABLE NAME
+    public static final String EPC_ROW_ID = "row_id";
+    public static final String EPC_SCAN_ID = "scan_id";
+    public static final String EPC_RAW_CODE = "epc_raw";
 
     private Context context;
 
@@ -151,11 +163,19 @@ public class MyDBHandler extends SQLiteOpenHelper {
                         + DOWNLOAD_PASS + " TEXT,"
                         + DOWNLOAD_QUERY + " TEXT,"
                         + DOWNLOAD_TABEL + " TEXT " + ")";
-		db.execSQL(CREATE_REPORT_TABLE);
+
+        String CREATE_EPC_RAW_TABLE =
+                "CREATE TABLE IF NOT EXISTS " + TABLE_EPC_RAW + "("
+                        + EPC_ROW_ID + " INTEGER PRIMARY KEY,"
+                        + EPC_SCAN_ID+ " INTEGER,"
+                        + EPC_RAW_CODE + " TEXT)";
+
+        db.execSQL(CREATE_REPORT_TABLE);
         db.execSQL(CREATE_ORDER_TABLE);
         db.execSQL(CREATE_TEMP_TABLE);
         db.execSQL(CREATE_DOWNLOAD_TABLE);
         db.execSQL(CREATE_ASLI_TABLE);
+        db.execSQL(CREATE_EPC_RAW_TABLE);
 	}
 
 	@Override
@@ -335,233 +355,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         else if (itemCount > 0) return (0-itemCount);
 
         return 0;
-    }
-
-    // TODO DISINI
-    public void getDataAsli(DatabaseResponseCallback callback) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_ORDER, null, null, null, null, null, null);
-
-        // Parse the cursor
-        if (!cursor.moveToFirst()) return;
-
-        List<EpcObject> listEpc= parseCursorToListItemDataAsli(cursor);
-        callback.onData(listEpc);
-    }
-
-    public void getDataAsli(DatabaseResponseCallback callback, String aggregator) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_ORDER, null,  ORDER_DESKRIPSI + " LIKE \"%" + aggregator + "%\"" , null, null, null, null);
-
-        // Parse the cursor
-        if (!cursor.moveToFirst()) return;
-        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
-        callback.onData(listEpc);
-    }
-
-    public void getDataAsli(DatabaseResponseCallback callback, String[] queryAggregator) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selectionQuery = dataAsliSelectionQueryBuilder(queryAggregator);
-        Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
-        Log.d("FAJAR", "seelction query " + selectionQuery + " " + cursor.getCount());
-        for (String string : queryAggregator) {
-            Log.d("FAJAR", string);
-        }
-
-        // Parse the cursor
-        if (!cursor.moveToFirst()) return;
-        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
-        callback.onData(listEpc);
-    }
-
-    public void getDataAsli(DatabaseResponseCallback callback, SearchQueryAggregator searchQueryAggregator) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selectionQuery = dataAsliSelectionQueryBuilder(searchQueryAggregator);
-        String innerSelectQuery = dataAsliInnerSelectQueryBuilder(searchQueryAggregator);
-        //Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
-        String wholeQuery = "SELECT * FROM (" + innerSelectQuery +")as A WHERE "+ selectionQuery;
-        Cursor cursor = db.rawQuery(wholeQuery, null);
-        Log.d("FAJAR", "seelction query " + wholeQuery + " " + cursor.getCount());
-
-        // Parse the cursor
-        if (!cursor.moveToFirst()) return;
-        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
-        callback.onData(listEpc);
-    }
-
-    private List<EpcObject> parseCursorToListItemDataAsli(Cursor cursor) {
-        List<EpcObject> listEpc = new ArrayList<>();
-        cursor.moveToPosition(-1);
-        while(cursor.moveToNext()) {
-            int orderCodeIndex = cursor.getColumnIndex(ORDER_KODE);
-            int orderJumlahCekIndex = cursor.getColumnIndex(ORDER_JUMLAHCEK);
-            int orderWarehouseIndex = cursor.getColumnIndex(ORDER_WAREHOUSE);
-            int ordedJumlahDataIndex = cursor.getColumnIndex(ORDER_JUMLAHDATA);
-            int orderPeriodIndex = cursor.getColumnIndex(ORDER_PERIOD);
-            int orderGroupIndex = cursor.getColumnIndex(ORDER_GROUP);
-            int orderTanggalIndex = cursor.getColumnIndex(ORDER_TGL);
-            int orderDeskripsiIndex = cursor.getColumnIndex(ORDER_DESKRIPSI);
-            int orderCatatanIndex = cursor.getColumnIndex(ORDER_CATATAN);
-            int orderSelisihIndex = cursor.getColumnIndex(ORDER_SELISIH);
-
-            String orderCode= cursor.getString(orderCodeIndex);
-            String orderJumlahCek = cursor.getString(orderJumlahCekIndex);
-            String orderWarehouse = cursor.getString(orderWarehouseIndex);
-            String orderJumlahData = cursor.getString(ordedJumlahDataIndex);
-            String orderPeriod = cursor.getString(orderPeriodIndex);
-            String orderGroup = cursor.getString(orderGroupIndex);
-            String orderTanggal = cursor.getString(orderTanggalIndex);
-            String orderDeskripsi = cursor.getString(orderDeskripsiIndex);
-            String orderCatatan = cursor.getString(orderCatatanIndex);
-            String orderSelisih= cursor.getString(orderSelisihIndex);
-
-            //Item item = new Item(orderCode, Integer.parseInt(orderJumlahData), orderWarehouse, orderPeriod,
-//                    orderGroup, orderDeskripsi);
-            EpcObject item = new EpcObject(orderCode, orderDeskripsi, Integer.parseInt(orderJumlahData),
-                    0);
-            listEpc.add(item);
-            item = null;
-        }
-        Log.d("FAJAR", "listepc " + listEpc.size());
-        return listEpc;
-    }
-
-    private String dataAsliSelectionQueryBuilder(String[] arguments) {
-        int size = arguments.length;
-        if (size == 1) {
-            Log.d("FAJAR", "argument " + arguments[0]);
-
-            return ORDER_DESKRIPSI + " LIKE \"%" + arguments[0] +"%\" OR " +
-                    ORDER_KODE + " LIKE \"%" + arguments[0] +"%\"";
-        }
-        else {
-            String selectionQuery = "";
-            for (int i=0; i < size; i++) {
-                String argument = arguments[i];
-                if(i != size -1) {
-                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
-                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
-                } else {
-                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
-                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\"" ;
-                }
-            }
-
-            return selectionQuery;
-        }
-    }
-
-    private String dataAsliInnerSelectQueryBuilder(SearchQueryAggregator searchQueryAggregator) {
-        List<String> minusOperation = searchQueryAggregator.getMinusOperation();
-        String selectionQuery = "";
-
-        if(minusOperation == null || minusOperation.size() == 0) {
-            return TABLE_ORDER;
-        }
-
-        String innerSelect = "SELECT * FROM " + TABLE_ORDER + " WHERE ";
-        if (minusOperation.size() == 1) {
-            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " NOT LIKE \"%" + minusOperation.get(0) +"%\" AND " +
-                    ORDER_KODE + " NOT LIKE \"%" + minusOperation.get(0) +"%\" ";
-
-        } else if (minusOperation.size() > 1) {
-            for (int i=0; i < minusOperation.size(); i++) {
-                String argument = minusOperation.get(i);
-                if(argument != "") {
-                    if(i != minusOperation.size() -1) {
-                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " NOT LIKE \"%"+argument+"%\" AND ";
-                        selectionQuery = selectionQuery + ORDER_KODE + " NOT LIKE \"%"+argument+"%\" AND ";
-                    } else {
-                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " NOT LIKE \"%"+argument + "%\" AND " ;
-                        selectionQuery = selectionQuery + ORDER_KODE + " NOT LIKE \"%"+argument + "%\"" ;
-                    }
-                }
-            }
-        }
-
-        return innerSelect + selectionQuery;
-    }
-
-    private String dataAsliSelectionQueryBuilder(SearchQueryAggregator searchQueryAggregator) {
-        // CHECK NORMAL OPERATION
-        List<String> normalOperation = searchQueryAggregator.getNormalOperation();
-        List<String> quoteOperation = searchQueryAggregator.getQuoteOperation();
-        List<String> minusOperation = searchQueryAggregator.getMinusOperation();
-        String selectionQuery = "";
-
-
-        if (normalOperation.size() == 1 && normalOperation.get(0) != "") {
-            Log.d("FAJAR", "masuk 1");
-            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE \"%" + normalOperation.get(0) +"%\" OR " +
-                    ORDER_KODE + " LIKE \"%" + normalOperation.get(0) +"%\" ";
-
-        } else if (normalOperation.size() > 1) {
-            Log.d("FAJAR", "masuk 1 more");
-            for (int i=0; i < normalOperation.size(); i++) {
-                String argument = normalOperation.get(i);
-                if(argument != null) {
-                    if(i != normalOperation.size() -1) {
-                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
-                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
-                    } else {
-                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
-                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\"" ;
-                    }
-                }
-            }
-        }
-
-        // CHECK QUOTE OPERATION
-        if(normalOperation != null && normalOperation.size() != 0) {
-            if(normalOperation.get(0) != "") {
-                selectionQuery +=" OR ";
-            }
-        }
-
-        if (quoteOperation.size() == 1 && quoteOperation.get(0) != "") {
-            Log.d("FAJAR", "masuk 1 quote");
-            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE \"%" + quoteOperation.get(0) +"%\" OR " +
-                    ORDER_KODE + " LIKE \"%" + quoteOperation.get(0) +"%\" ";
-
-        } else if (quoteOperation.size() > 1) {
-            Log.d("FAJAR", "masuk 1 qupte more");
-            for (int i=0; i < quoteOperation.size(); i++) {
-                String argument = quoteOperation.get(i);
-                if(argument != "") {
-                    if(i != quoteOperation.size() -1) {
-                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
-                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
-                    } else {
-                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
-                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\" " ;
-                    }
-                }
-            }
-        }
-
-        // CHECK MINUS OPERATION
-//        if (quoteOperation != null || normalOperation != null) {
-//            selectionQuery += " AND ";
-//        }
-//
-//        if (minusOperation.size() == 1) {
-//            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE NOT \"%" + minusOperation.get(0) +"%\" AND " +
-//                    ORDER_KODE + " LIKE NOT \"%" + minusOperation.get(0) +"%\" ";
-//
-//        } else if (minusOperation.size() > 1) {
-//            for (int i=0; i < minusOperation.size(); i++) {
-//                String argument = minusOperation.get(i);
-//                if(i != minusOperation.size() -1) {
-//                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE NOT \"%"+argument+"%\" AND ";
-//                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE NOT \"%"+argument+"%\" AND ";
-//                } else {
-//                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE NOT \"%"+argument + "%\" AND " ;
-//                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE NOT \"%"+argument + "%\"" ;
-//                }
-//            }
-//        }
-        Log.d("FAJAR", "selectionQuery " + selectionQuery);
-        return selectionQuery;
     }
 
     public void addDataSetting(DataSetting listDataSetting) {
@@ -964,6 +757,253 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         }
         return result;
+    }
+
+    // ====================================================================
+
+
+    // TODO DISINI
+    public void getDataAsli(DatabaseResponseCallback callback) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null, null, null, null, null, null);
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+
+        List<EpcObject> listEpc= parseCursorToListItemDataAsli(cursor);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+    public void getDataAsli(DatabaseResponseCallback callback, String aggregator) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null,  ORDER_DESKRIPSI + " LIKE \"%" + aggregator + "%\"" , null, null, null, null);
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+    public void getDataAsli(DatabaseResponseCallback callback, String[] queryAggregator) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectionQuery = dataAsliSelectionQueryBuilder(queryAggregator);
+        Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
+        Log.d("FAJAR", "seelction query " + selectionQuery + " " + cursor.getCount());
+        for (String string : queryAggregator) {
+            Log.d("FAJAR", string);
+        }
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+    public void getDataAsli(DatabaseResponseCallback callback, SearchQueryAggregator searchQueryAggregator) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectionQuery = dataAsliSelectionQueryBuilder(searchQueryAggregator);
+        String innerSelectQuery = dataAsliInnerSelectQueryBuilder(searchQueryAggregator);
+        //Cursor cursor = db.query(TABLE_ORDER, null,  selectionQuery , null, null, null, null);
+        String wholeQuery = "SELECT * FROM (" + innerSelectQuery +")as A WHERE "+ selectionQuery;
+        Cursor cursor = db.rawQuery(wholeQuery, null);
+        Log.d("FAJAR", "seelction query " + wholeQuery + " " + cursor.getCount());
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+    private List<EpcObject> parseCursorToListItemDataAsli(Cursor cursor) {
+        List<EpcObject> listEpc = new ArrayList<>();
+        cursor.moveToPosition(-1);
+        while(cursor.moveToNext()) {
+            int orderCodeIndex = cursor.getColumnIndex(ORDER_KODE);
+            int orderJumlahCekIndex = cursor.getColumnIndex(ORDER_JUMLAHCEK);
+            int orderWarehouseIndex = cursor.getColumnIndex(ORDER_WAREHOUSE);
+            int ordedJumlahDataIndex = cursor.getColumnIndex(ORDER_JUMLAHDATA);
+            int orderPeriodIndex = cursor.getColumnIndex(ORDER_PERIOD);
+            int orderGroupIndex = cursor.getColumnIndex(ORDER_GROUP);
+            int orderTanggalIndex = cursor.getColumnIndex(ORDER_TGL);
+            int orderDeskripsiIndex = cursor.getColumnIndex(ORDER_DESKRIPSI);
+            int orderCatatanIndex = cursor.getColumnIndex(ORDER_CATATAN);
+            int orderSelisihIndex = cursor.getColumnIndex(ORDER_SELISIH);
+
+            String orderCode= cursor.getString(orderCodeIndex);
+            String orderJumlahCek = cursor.getString(orderJumlahCekIndex);
+            String orderWarehouse = cursor.getString(orderWarehouseIndex);
+            String orderJumlahData = cursor.getString(ordedJumlahDataIndex);
+            String orderPeriod = cursor.getString(orderPeriodIndex);
+            String orderGroup = cursor.getString(orderGroupIndex);
+            String orderTanggal = cursor.getString(orderTanggalIndex);
+            String orderDeskripsi = cursor.getString(orderDeskripsiIndex);
+            String orderCatatan = cursor.getString(orderCatatanIndex);
+            String orderSelisih= cursor.getString(orderSelisihIndex);
+
+            //Item item = new Item(orderCode, Integer.parseInt(orderJumlahData), orderWarehouse, orderPeriod,
+//                    orderGroup, orderDeskripsi);
+            EpcObject item = new EpcObject(orderCode, orderDeskripsi, Integer.parseInt(orderJumlahData),
+                    0);
+            listEpc.add(item);
+            item = null;
+        }
+        Log.d("FAJAR", "listepc " + listEpc.size());
+        return listEpc;
+    }
+
+    private String dataAsliSelectionQueryBuilder(String[] arguments) {
+        int size = arguments.length;
+        if (size == 1) {
+            Log.d("FAJAR", "argument " + arguments[0]);
+
+            return ORDER_DESKRIPSI + " LIKE \"%" + arguments[0] +"%\" OR " +
+                    ORDER_KODE + " LIKE \"%" + arguments[0] +"%\"";
+        }
+        else {
+            String selectionQuery = "";
+            for (int i=0; i < size; i++) {
+                String argument = arguments[i];
+                if(i != size -1) {
+                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
+                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
+                } else {
+                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
+                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\"" ;
+                }
+            }
+
+            return selectionQuery;
+        }
+    }
+
+    private String dataAsliInnerSelectQueryBuilder(SearchQueryAggregator searchQueryAggregator) {
+        List<String> minusOperation = searchQueryAggregator.getMinusOperation();
+        String selectionQuery = "";
+
+        if(minusOperation == null || minusOperation.size() == 0) {
+            return TABLE_ORDER;
+        }
+
+        String innerSelect = "SELECT * FROM " + TABLE_ORDER + " WHERE ";
+        if (minusOperation.size() == 1) {
+            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " NOT LIKE \"%" + minusOperation.get(0) +"%\" AND " +
+                    ORDER_KODE + " NOT LIKE \"%" + minusOperation.get(0) +"%\" ";
+
+        } else if (minusOperation.size() > 1) {
+            for (int i=0; i < minusOperation.size(); i++) {
+                String argument = minusOperation.get(i);
+                if(argument != "") {
+                    if(i != minusOperation.size() -1) {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " NOT LIKE \"%"+argument+"%\" AND ";
+                        selectionQuery = selectionQuery + ORDER_KODE + " NOT LIKE \"%"+argument+"%\" AND ";
+                    } else {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " NOT LIKE \"%"+argument + "%\" AND " ;
+                        selectionQuery = selectionQuery + ORDER_KODE + " NOT LIKE \"%"+argument + "%\"" ;
+                    }
+                }
+            }
+        }
+
+        return innerSelect + selectionQuery;
+    }
+
+    private String dataAsliSelectionQueryBuilder(SearchQueryAggregator searchQueryAggregator) {
+        // CHECK NORMAL OPERATION
+        List<String> normalOperation = searchQueryAggregator.getNormalOperation();
+        List<String> quoteOperation = searchQueryAggregator.getQuoteOperation();
+        List<String> minusOperation = searchQueryAggregator.getMinusOperation();
+        String selectionQuery = "";
+
+
+        if (normalOperation.size() == 1 && normalOperation.get(0) != "") {
+            Log.d("FAJAR", "masuk 1");
+            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE \"%" + normalOperation.get(0) +"%\" OR " +
+                    ORDER_KODE + " LIKE \"%" + normalOperation.get(0) +"%\" ";
+
+        } else if (normalOperation.size() > 1) {
+            Log.d("FAJAR", "masuk 1 more");
+            for (int i=0; i < normalOperation.size(); i++) {
+                String argument = normalOperation.get(i);
+                if(argument != null) {
+                    if(i != normalOperation.size() -1) {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
+                    } else {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\"" ;
+                    }
+                }
+            }
+        }
+
+        // CHECK QUOTE OPERATION
+        if(normalOperation != null && normalOperation.size() != 0 && quoteOperation.size() != 0) {
+            if(normalOperation.get(0) != "") {
+                selectionQuery +=" OR ";
+            }
+        }
+
+        if (quoteOperation.size() == 1 && quoteOperation.get(0) != "") {
+            Log.d("FAJAR", "masuk 1 quote");
+            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE \"%" + quoteOperation.get(0) +"%\" OR " +
+                    ORDER_KODE + " LIKE \"%" + quoteOperation.get(0) +"%\" ";
+
+        } else if (quoteOperation.size() > 1) {
+            Log.d("FAJAR", "masuk 1 qupte more");
+            for (int i=0; i < quoteOperation.size(); i++) {
+                String argument = quoteOperation.get(i);
+                if(argument != "") {
+                    if(i != quoteOperation.size() -1) {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument+"%\" OR ";
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument+"%\" OR ";
+                    } else {
+                        selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE \"%"+argument + "%\" OR " ;
+                        selectionQuery = selectionQuery + ORDER_KODE + " LIKE \"%"+argument + "%\" " ;
+                    }
+                }
+            }
+        }
+
+        // CHECK MINUS OPERATION
+//        if (quoteOperation != null || normalOperation != null) {
+//            selectionQuery += " AND ";
+//        }
+//
+//        if (minusOperation.size() == 1) {
+//            selectionQuery = selectionQuery +  ORDER_DESKRIPSI + " LIKE NOT \"%" + minusOperation.get(0) +"%\" AND " +
+//                    ORDER_KODE + " LIKE NOT \"%" + minusOperation.get(0) +"%\" ";
+//
+//        } else if (minusOperation.size() > 1) {
+//            for (int i=0; i < minusOperation.size(); i++) {
+//                String argument = minusOperation.get(i);
+//                if(i != minusOperation.size() -1) {
+//                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE NOT \"%"+argument+"%\" AND ";
+//                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE NOT \"%"+argument+"%\" AND ";
+//                } else {
+//                    selectionQuery = selectionQuery + ORDER_DESKRIPSI + " LIKE NOT \"%"+argument + "%\" AND " ;
+//                    selectionQuery = selectionQuery + ORDER_KODE + " LIKE NOT \"%"+argument + "%\"" ;
+//                }
+//            }
+//        }
+        Log.d("FAJAR", "selectionQuery " + selectionQuery);
+        return selectionQuery;
+    }
+
+    public void addToEpcRawDatabase(int id, String epcCode, Callbacks callback) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(EPC_SCAN_ID, id);
+        cv.put(EPC_RAW_CODE, epcCode);
+        Log.d("FAJAR", "try to insert to database");
+
+        long nres = db.insertOrThrow(TABLE_EPC_RAW, null, cv);
+        if (nres >= 0) callback.onSuccess();
+        else callback.onError();
     }
 	
 }

@@ -42,11 +42,71 @@ public class StockScanFragment extends Fragment {
     private LinearLayoutManager mManager;
     private RecyclerView mRecyclerView;
     private MyDBHandler mMyDBHandler = null;
+    private int scanId = 1;
 
     public static StockScanFragment newInstance(){
         StockScanFragment fragment = new StockScanFragment();
         return fragment;
     }
+
+    public void incrementScanId() {
+        scanId++;
+    }
+
+
+    private Runnable notifyOnUiThread = new Runnable() {
+        @Override
+        public void run() {
+            mAdapter.notifyDataSetChanged();
+        }
+    };
+
+    private void toastInCallback(final String toast) {
+        Runnable showToast = new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getActivity(), toast, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        getActivity().runOnUiThread(showToast);
+    }
+
+    private DatabaseResponseCallback callback = new DatabaseResponseCallback() {
+        @Override
+        public void onData(List<EpcObject> listItem) {
+            mListData.clear();
+            mListData.addAll(listItem);
+            getActivity().runOnUiThread(notifyOnUiThread);
+        }
+
+        @Override
+        public void onSuccess() {
+
+        }
+
+        @Override
+        public void onError() {
+
+        }
+    };
+
+    private DatabaseResponseCallback epcSaveCallback = new DatabaseResponseCallback() {
+        @Override
+        public void onData(List<EpcObject> listItem) {
+
+        }
+
+        @Override
+        public void onSuccess() {
+            toastInCallback("Save to EPC Database Success");
+        }
+
+        @Override
+        public void onError() {
+            toastInCallback("Save to EPC Database Error");
+        }
+    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,32 +139,6 @@ public class StockScanFragment extends Fragment {
         return v;
     }
 
-    private Runnable notifyOnUiThread = new Runnable() {
-        @Override
-        public void run() {
-            mAdapter.notifyDataSetChanged();
-        }
-    };
-
-    private DatabaseResponseCallback callback = new DatabaseResponseCallback() {
-        @Override
-        public void onData(List<EpcObject> listItem) {
-            mListData.clear();
-            mListData.addAll(listItem);
-            getActivity().runOnUiThread(notifyOnUiThread);
-        }
-
-        @Override
-        public void onSuccess() {
-
-        }
-
-        @Override
-        public void onError() {
-
-        }
-    };
-
     public void refreshDataByTextQuery(String text) {
         Toast.makeText(getActivity(), "Text Submitted in fragment " + text, Toast.LENGTH_SHORT).show();
         Pattern pattern = Pattern.compile("[^a-zA-Z0-9 ]");
@@ -123,4 +157,8 @@ public class StockScanFragment extends Fragment {
     public static interface DatabaseResponseCallback extends MainActivity.Callbacks {
         void onData(List<EpcObject> listItem);
     };
+
+    public void saveScanItemToDatabaseInFragment(int id, String epcRawCode) {
+        mMyDBHandler.addToEpcRawDatabase(id,epcRawCode, epcSaveCallback);
+    }
 }

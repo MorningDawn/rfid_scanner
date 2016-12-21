@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.clouiotech.pda.demo.Activity.RecyclerViewActivity;
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
 import com.clouiotech.pda.demoExample.R;
 
@@ -74,7 +75,8 @@ public class EpcScanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         switch (view.getId()) {
             case R.id.ll_card :
                 int pos = (int) view.getTag();
-                Toast.makeText(mContext, "Item " + pos, Toast.LENGTH_SHORT).show();
+                ((RecyclerViewActivity) mContext).saveEpcItemToDatabase(1, mListData.get(pos).getId());
+                Toast.makeText(mContext, "Add Item " + pos, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/item_main.xml",
-        "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/item_main.xml"
-    },
-    {
         "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_read_matching.xml",
         "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/uhf_read_matching.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/item_main.xml",
+        "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/item_main.xml"
     },
     {
         "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
@@ -208,12 +208,12 @@
         "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/dlt_main.xml"
     },
     {
-        "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_configration.xml",
-        "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/uhf_configration.xml"
-    },
-    {
         "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/dlt_meter_op.xml",
         "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/dlt_meter_op.xml"
+    },
+    {
+        "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/uhf_configration.xml",
+        "source": "/home/roka/Project/rfid_scanner/Android Studio/app/src/main/res/layout/uhf_configration.xml"
     },
     {
         "merged": "/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/res/merged/debug/layout/item_epc_scan.xml",
