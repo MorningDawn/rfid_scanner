@@ -8,16 +8,32 @@
         android:visible="false"
         app:showAsAction="always"
         app:actionViewClass="android.support.v7.widget.SearchView"/>
+
+    <item
+        android:id="@+id/menu_qrcode"
+        android:icon="@drawable/ic_qr_code_white"
+        android:title="QR Code"
+        android:visible="true"
+        app:showAsAction="always"
+        />
     <item
         android:id="@+id/menu_save"
         android:title="Save"
         android:icon="@drawable/ic_save_white_24dp"
-        app:showAsAction="always"/>
+        android:visible="false"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_sort"
         android:icon="@drawable/ic_sort_white_24dp"
         android:title="Sort by"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_filter"
+        android:icon="@drawable/ic_filter_list_white_24dp"
+        android:title="Filter by"
+        app:showAsAction="never"/>
+
 
 </menu>

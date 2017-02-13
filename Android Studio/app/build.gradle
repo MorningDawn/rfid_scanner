@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.clouiotech.pda.demoExample"
-        minSdkVersion 8
+        minSdkVersion 14
         targetSdkVersion 19
     }
 
@@ -27,4 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
+    compile 'com.github.nisrulz:qreader:2.0.1'
+    compile 'xyz.danoz:recyclerviewfastscroller:0.1.3'
 }

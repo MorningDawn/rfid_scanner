@@ -1,14 +1,27 @@
 package com.clouiotech.pda.demo.Activity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.Preference;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -27,6 +40,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -41,26 +55,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout mLlDownload;
     private LinearLayout mLlScan;
     private LinearLayout mLlClear;
+    private LinearLayout mLlExport;
+    private SharedPreferences mPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mPref = getSharedPreferences(GlobalVariable.PREFERENCES_NAME, Context.MODE_PRIVATE);
+
         mIvScanUHF = (ImageView) findViewById(R.id.iv_uhf);
         mLlDownload = (LinearLayout) findViewById(R.id.ll_download);
         mLlScan = (LinearLayout) findViewById(R.id.ll_scan);
         mLlClear = (LinearLayout) findViewById(R.id.ll_clear);
+        mLlExport = (LinearLayout) findViewById(R.id.ll_export);
 
         mIvScanUHF.setOnClickListener(this);
         mLlClear.setOnClickListener(this);
         mLlScan.setOnClickListener(this);
         mLlDownload.setOnClickListener(this);
+        mLlExport.setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        // Create Database if app is installed for first time
+        new MyDBHandler(this, null, null, 0);
 
     }
 
@@ -74,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
             case R.id.menu_version :
-                Toast.makeText(MainActivity.this, "Version clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, getResources().getString(R.string.app_version), Toast.LENGTH_LONG).show();
                 break;
             case R.id.menu_admin_privillege :
                 Toast.makeText(MainActivity.this, "Admin Mode On", Toast.LENGTH_SHORT).show();
@@ -98,8 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } break;
 
             case R.id.ll_download : {
-                Toast.makeText(MainActivity.this, "Download Data", Toast.LENGTH_SHORT).show();
-                downloadData();
+                showDownloadURLAlertDialog();
             } break;
 
             case R.id.ll_scan : {
@@ -110,7 +132,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } break;
 
             case R.id.ll_clear : {
-                Toast.makeText(MainActivity.this, "Clear Data", Toast.LENGTH_SHORT).show();
+                deleteStockScanDataInDatabase();
+            } break;
+
+            case R.id.ll_export : {
+                Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
             } break;
 
             default:
@@ -118,17 +144,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void downloadData() {
-        BaseRestInterface restInterface = BaseRestClient.getRestClient().create(BaseRestInterface.class);
+    public void downloadData(int i) {
+        final String url = mPref.getString(GlobalVariable.PREF_DOWNLOAD_URL_KEY, GlobalVariable.BASE_URL);
+        BaseRestInterface restInterface = BaseRestClient.getRestClient(url).create(BaseRestInterface.class);
 
-        Call<ItemResponse> call = restInterface.getTryJson();
+        Call<ItemResponse> call = restInterface.getTryJson(i);
 
         call.enqueue(new Callback<ItemResponse>() {
             @Override
             public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
                 int statusCode = response.code();
+                Log.d("ASDASD", response.code() + " " + response.raw());
+                if (statusCode != 200) {
+                    Toast.makeText(MainActivity.this, statusCode + " " + url + " Request cannot be completed, Check whether the server url is right", Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
                 List<Item> listItem = response.body().getListItem();
-                Toast.makeText(MainActivity.this, "sizenya " + listItem.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Download completed with " + listItem.size() + " rows", Toast.LENGTH_SHORT).show();
                 addDataToDatabase(listItem);
             }
 
@@ -138,6 +171,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "On Failure " + error, Toast.LENGTH_SHORT).show();
             }
         });
+
+        restInterface = null;
     }
 
     private void addDataToDatabase(final List<Item> listItem) {
@@ -169,8 +204,111 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Thread(databaseRunnable).start();
     }
 
-    public static interface Callbacks {
+    private void deleteStockScanDataInDatabase() {
+        final Callbacks databaseCallback = new Callbacks() {
+            @Override
+            public void onSuccess() {
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "Delete Data Success", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        };
+
+        Runnable deleteInDatabase = new Runnable() {
+            @Override
+            public void run() {
+                MyDBHandler databaseHandler = new MyDBHandler(MainActivity.this, null, null, 1);
+                databaseHandler.deleteScanStokOpnameData(databaseCallback);
+            }
+        };
+
+        new Thread(deleteInDatabase).start();
+    }
+
+    private void showDownloadAlertDialog() {
+        DownloadAlertDialogFragment dialog = new DownloadAlertDialogFragment();
+        dialog.show(getSupportFragmentManager(), null);
+    }
+
+    private void showDownloadURLAlertDialog() {
+        DownloadURLDialogFragment dialog = new DownloadURLDialogFragment();
+        dialog.show(getSupportFragmentManager(), null);
+    }
+
+    public interface Callbacks {
         void onSuccess();
         void onError();
+    }
+
+    public class DownloadURLDialogFragment extends DialogFragment {
+        public DownloadURLDialogFragment() {
+            super();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+            View downloadURLView = inflater.inflate(R.layout.dialog_download_url, null);
+            final EditText etDownloadURL = (EditText) downloadURLView.findViewById(R.id.et_download_url);
+
+            etDownloadURL.setText(mPref.getString(GlobalVariable.PREF_DOWNLOAD_URL_KEY, GlobalVariable.BASE_URL));
+
+
+
+            final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            dialogBuilder.setView(downloadURLView);
+            dialogBuilder.setPositiveButton("Download", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if(!(etDownloadURL.getText().toString().endsWith("/"))) {
+                        Toast.makeText(MainActivity.this, "Make sure url ends with '/'", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String downloadURL = etDownloadURL.getText().toString();
+                        Log.d("ASDF", downloadURL);
+                        showDownloadAlertDialog();
+                        mPref.edit().putString(GlobalVariable.PREF_DOWNLOAD_URL_KEY, downloadURL).commit();
+                    }
+                }
+            });
+            dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+
+            return dialogBuilder.create();
+        }
+    }
+
+    public class DownloadAlertDialogFragment extends DialogFragment {
+        public DownloadAlertDialogFragment() {
+            super();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final String[] listOfDownloadFilter = {"Filter Gudang", "Filter Period", "Filter Gudang dan Period"};
+
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+            dialogBuilder.setTitle("Pick Mode");
+            dialogBuilder.setItems(listOfDownloadFilter, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(MainActivity.this, "Download with " + listOfDownloadFilter[i], Toast.LENGTH_SHORT).show();
+                    downloadData(i);
+                }
+            });
+
+            return dialogBuilder.create();
+        }
     }
 }

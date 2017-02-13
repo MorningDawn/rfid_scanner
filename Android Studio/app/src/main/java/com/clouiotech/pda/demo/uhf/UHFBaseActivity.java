@@ -15,15 +15,15 @@ import java.util.HashMap;
  */
 public class UHFBaseActivity extends BaseActivity {
 
-	static Boolean _UHFSTATE = false;
+	public static Boolean _UHFSTATE = false;
 	// static int _PingPong_ReadTime = 10000;
 	// static int _PingPong_StopTime = 300;
-	static int _NowAntennaNo = 1;
-	static int _UpDataTime = 0;
-	static int _Max_Power = 30;
-	static int _Min_Power = 0;
+	public static int _NowAntennaNo = 1;
+	public static int _UpDataTime = 1000; // Default is 0
+	public static int _Max_Power = 30;
+	public static int _Min_Power = 0;
 
-	static int low_power_soc = 10;
+	public static int low_power_soc = 10;
 
 	public static UHF CLReader = UHFReader.getUHFInstance();
 

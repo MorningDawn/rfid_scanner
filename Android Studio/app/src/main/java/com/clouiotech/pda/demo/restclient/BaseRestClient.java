@@ -8,15 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class BaseRestClient {
 
-    private static final String BASE_URL = "http://www.rokarokaroka.com/api/";
     private static Retrofit retrofit = null;
 
-    public static Retrofit getRestClient() {
-        if(retrofit == null) {
-            retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
+    public static Retrofit getRestClient(String baseUrl) {
+        retrofit = new Retrofit.Builder().baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
         return retrofit;
     }

@@ -75,8 +75,8 @@ public class EpcScanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         switch (view.getId()) {
             case R.id.ll_card :
                 int pos = (int) view.getTag();
-                ((RecyclerViewActivity) mContext).saveEpcItemToDatabase(1, mListData.get(pos).getId());
-                Toast.makeText(mContext, "Add Item " + pos, Toast.LENGTH_SHORT).show();
+                //((RecyclerViewActivity) mContext).saveEpcItemToDatabase(1, mListData.get(pos).getId());
+                //Toast.makeText(mContext, "Add Item " + pos, Toast.LENGTH_SHORT).show();
         }
     }
 

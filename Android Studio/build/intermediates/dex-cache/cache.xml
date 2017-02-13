@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.0.1_f6fb3dc8dea80c5ebc1905b9591d5fad04116446.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/roka/Project/rfid_scanner/Android Studio/app/libs/okhttp-3.4.1.jar"
         jumboMode="false"
         optimize="true"
@@ -30,12 +39,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/xyz.danoz/recyclerviewfastscroller/0.1.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="752bfaeaf44b9c4b63c98ceca421348a20ff10be">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/xyz.danoz-recyclerviewfastscroller-0.1.3_4fd25b6fee17f056f4114a4e908f118d0c831d09.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.0.1_28d9305bfd5eb4e46146ea91b7c079966ba16a79.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/roka/Project/rfid_scanner/Android Studio/app/libs/libdlt.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="035a4879813fec0af7c0bdb068dc7c57b296d6b7">
         <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/libdlt_704201f2474705d3eaa219afc5f1c02e834117f1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.0.0_9f25e865c73b06751a75177a5e93019725a4ca4b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -66,6 +102,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2e3d64b413b11a8168885bda4773343962c281bc">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.github.nisrulz-qreader-2.0.1_2af794e859fcba6c50c83fcfdbd215d026157aa2.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -93,15 +138,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
-        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.1_12bf907c9795f53066d69a5d616e969b4e7008c5.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/roka/Project/rfid_scanner/Android Studio/app/libs/okio-1.6.0.jar"
         jumboMode="false"
         optimize="true"
@@ -120,12 +156,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.1_80fd726fc6f8f5307525758202a50181d83b5c8b.jar" />
+        sha1="ba6aa5e69ef31dee57208125323cee958fc67565">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-vision-10.0.1_928e14babe2733ad9a3cfc3a45088bcf02a3c8fc.jar" />
     </item>
     <item
         is-multidex="false"
@@ -138,12 +174,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/roka/Project/android-sdks/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
-        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.1_cc19cf65af9ea6072fe060df714134324d9bc143.jar" />
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0_56eae889507aa2e3df79dead30a7281fcaf8735c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -153,6 +189,24 @@
         revision="25.0.0"
         sha1="673d77a5bbddd766037f088e775df525c46407f0">
         <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.1_735d28efaeb23d496774ba1716dca328d4770f74.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.0.1_9f062484b6d675b1482653633a29f33c5a1f7b0b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/roka/Project/android-sdks/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0_2464ba913d8a27cd5ec79816bdd6ea8ac345e894.jar" />
     </item>
 
 </items>

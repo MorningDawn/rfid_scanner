@@ -13,6 +13,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.clouiotech.pda.demo.Activity.MainActivity.Callbacks;
+import com.clouiotech.pda.demo.Activity.RecyclerViewActivity;
 import com.clouiotech.pda.demo.BaseObject.SearchQueryAggregator;
 import com.clouiotech.pda.demo.Fragment.StockScanFragment.DatabaseResponseCallback;
 import com.clouiotech.pda.demo.BaseObject.EpcObject;
@@ -775,6 +776,46 @@ public class MyDBHandler extends SQLiteOpenHelper {
         callback.onData(listEpc);
     }
 
+    public void getDataAsli(DatabaseResponseCallback callback, int operation, int ascending) {
+        String orderBy = null;
+        String columnToSort = null;
+
+        if(ascending == 0) orderBy = "ASC";
+        else orderBy = "DESC";
+
+        switch(operation) {
+            case 0 :
+                columnToSort = ORDER_KODE;
+                break;
+
+            case 1 :
+                columnToSort = ORDER_JUMLAHDATA;
+                break;
+
+            case 2 :
+                columnToSort = ORDER_JUMLAHCEK;
+                break;
+
+            case 3 :
+                columnToSort = ORDER_SELISIH;
+                break;
+
+            default:
+                break;
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null, null, null, null, null, columnToSort + " " + orderBy);
+
+        // Parse the cursor
+        if (!cursor.moveToFirst()) return;
+
+        List<EpcObject> listEpc= parseCursorToListItemDataAsli(cursor);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+
     public void getDataAsli(DatabaseResponseCallback callback, String aggregator) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_ORDER, null,  ORDER_DESKRIPSI + " LIKE \"%" + aggregator + "%\"" , null, null, null, null);
@@ -796,7 +837,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
 
         // Parse the cursor
-        if (!cursor.moveToFirst()) return;
+        if (!cursor.moveToFirst()) {
+            Log.d("qazqaz", "Not found");
+            callback.onData(new ArrayList<EpcObject>());
+            return;
+        }
         List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
         cursor.close();
         callback.onData(listEpc);
@@ -812,7 +857,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Log.d("FAJAR", "seelction query " + wholeQuery + " " + cursor.getCount());
 
         // Parse the cursor
-        if (!cursor.moveToFirst()) return;
+        if (!cursor.moveToFirst()) {
+            Log.d("qazqaz", "Not found");
+            callback.onData(new ArrayList<EpcObject>());
+            return;
+        }
         List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
         cursor.close();
         callback.onData(listEpc);
@@ -847,8 +896,64 @@ public class MyDBHandler extends SQLiteOpenHelper {
             //Item item = new Item(orderCode, Integer.parseInt(orderJumlahData), orderWarehouse, orderPeriod,
 //                    orderGroup, orderDeskripsi);
             EpcObject item = new EpcObject(orderCode, orderDeskripsi, Integer.parseInt(orderJumlahData),
-                    0);
+                    Integer.parseInt(orderJumlahCek));
             listEpc.add(item);
+            item = null;
+        }
+        Log.d("FAJAR", "listepc " + listEpc.size());
+        return listEpc;
+    }
+
+    private List<EpcObject> parseCursorToListItemDataAsliInFilter(Cursor cursor, int operation, int minimum, int maximum) {
+        List<EpcObject> listEpc = new ArrayList<>();
+        cursor.moveToPosition(-1);
+        Log.d("FAJAR", "operation" + operation);
+        while(cursor.moveToNext()) {
+            int orderCodeIndex = cursor.getColumnIndex(ORDER_KODE);
+            int orderJumlahCekIndex = cursor.getColumnIndex(ORDER_JUMLAHCEK);
+            int orderWarehouseIndex = cursor.getColumnIndex(ORDER_WAREHOUSE);
+            int ordedJumlahDataIndex = cursor.getColumnIndex(ORDER_JUMLAHDATA);
+            int orderPeriodIndex = cursor.getColumnIndex(ORDER_PERIOD);
+            int orderGroupIndex = cursor.getColumnIndex(ORDER_GROUP);
+            int orderTanggalIndex = cursor.getColumnIndex(ORDER_TGL);
+            int orderDeskripsiIndex = cursor.getColumnIndex(ORDER_DESKRIPSI);
+            int orderCatatanIndex = cursor.getColumnIndex(ORDER_CATATAN);
+            int orderSelisihIndex = cursor.getColumnIndex(ORDER_SELISIH);
+
+            String orderCode= cursor.getString(orderCodeIndex);
+            String orderJumlahCek = cursor.getString(orderJumlahCekIndex);
+            String orderWarehouse = cursor.getString(orderWarehouseIndex);
+            String orderJumlahData = cursor.getString(ordedJumlahDataIndex);
+            String orderPeriod = cursor.getString(orderPeriodIndex);
+            String orderGroup = cursor.getString(orderGroupIndex);
+            String orderTanggal = cursor.getString(orderTanggalIndex);
+            String orderDeskripsi = cursor.getString(orderDeskripsiIndex);
+            String orderCatatan = cursor.getString(orderCatatanIndex);
+            String orderSelisih= cursor.getString(orderSelisihIndex);
+
+            //Item item = new Item(orderCode, Integer.parseInt(orderJumlahData), orderWarehouse, orderPeriod,
+//                    orderGroup, orderDeskripsi);
+            int toCheck = 0;
+            switch(operation) {
+                case 1 :
+                   toCheck = Integer.parseInt(orderJumlahData);
+                    break;
+
+                case 2 :
+                    toCheck = Integer.parseInt(orderJumlahCek);
+                    break;
+
+                case 3 :
+                    toCheck = Integer.parseInt(orderSelisih);
+                    break;
+
+                default:
+                    return null;
+
+            }
+            EpcObject item = new EpcObject(orderCode, orderDeskripsi, Integer.parseInt(orderJumlahData),
+                    Integer.parseInt(orderJumlahCek));
+            if (toCheck >= minimum && toCheck <= maximum) listEpc.add(item);
             item = null;
         }
         Log.d("FAJAR", "listepc " + listEpc.size());
@@ -1005,5 +1110,133 @@ public class MyDBHandler extends SQLiteOpenHelper {
         if (nres >= 0) callback.onSuccess();
         else callback.onError();
     }
-	
+
+    public void deleteScanStokOpnameData(Callbacks callback) {
+        SQLiteDatabase db = getReadableDatabase();
+        db.delete(TABLE_ASLI, null, null);
+        db.delete(TABLE_ORDER, null, null);
+        db.delete(TABLE_TEMP, null, null);
+
+        callback.onSuccess();
+    }
+
+    public void getTopItemName(RecyclerViewActivity.TopItemNameCallback callback) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + ORDER_DESKRIPSI + ", COUNT(*) AS count FROM " + TABLE_ORDER
+                + " GROUP BY " + ORDER_DESKRIPSI
+                + " ORDER BY COUNT(*) DESC LIMIT 6",null);
+
+        callback.onData(arrayOfStringParseTopItemNameCursor(cursor));
+    }
+
+    private List<String> arrayOfStringParseTopItemNameCursor(Cursor cursor) {
+        cursor.moveToPosition(-1);
+        Log.d("ASDF", ""+cursor.getCount());
+        List<String> result= new ArrayList<>();
+
+        int itemNameIndex = cursor.getColumnIndex(ORDER_DESKRIPSI);
+        while(cursor.moveToNext()) {
+            Log.d("ASDF", ""+cursor.getString(itemNameIndex));
+            if(cursor.getString(itemNameIndex) != null) result.add(cursor.getString(itemNameIndex));
+        }
+        cursor.close();
+        return result;
+    }
+
+    public void getAllItemByItemName(DatabaseResponseCallback callback, String itemName) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null," " + ORDER_DESKRIPSI + "='" +itemName +"'", null, null, null, null);
+
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsli(cursor);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+    public void getAllItemByItemQuantityStatus(DatabaseResponseCallback callback, int column,
+                                               int quantityMinimum, int quantityMaximum) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TABLE_ORDER, null,null,
+                null, null, null, null);
+
+        Log.d("ASDASD", ""+cursor.getCount());
+        if (!cursor.moveToFirst()) return;
+        List<EpcObject> listEpc = parseCursorToListItemDataAsliInFilter(cursor, column, quantityMinimum, quantityMaximum);
+        cursor.close();
+        callback.onData(listEpc);
+    }
+
+    public void insertEPCScanResult(DatabaseResponseCallback callback, String itemId) {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.query(TABLE_TEMP,null, TEMP_KODE + "='"+ itemId +"'",null, null, null, null);
+
+        if(cursor.getCount() > 0) {
+            cursor.close();
+        } else {
+            Cursor cursor2 = db.query(TABLE_ORDER,null, ORDER_KODE +"='"+itemId+"'", null,null, null, null);
+
+            Log.d("INSERTEPC", "in database cursor count " + cursor.getCount());
+            if (cursor2.getCount() > 0) {
+                cursor2.moveToPosition(-1);
+                while(cursor2.moveToNext()) {
+                    Log.d("INSERTEPC", "in database UPDATE MODE" + itemId);
+                    int jumlahCekIndex = cursor2.getColumnIndex(ORDER_JUMLAHCEK);
+                    int jumlahDataIndex = cursor2.getColumnIndex(ORDER_JUMLAHDATA);
+
+                    String jumlahCek = cursor2.getString(jumlahCekIndex);
+                    String jumlahData = cursor2.getString(jumlahDataIndex);
+
+                    ContentValues cv = new ContentValues();
+                    cv.put(ORDER_JUMLAHCEK, Integer.parseInt(jumlahCek) + 1);
+                    cv.put(ORDER_SELISIH, Integer.parseInt(jumlahData) - Integer.parseInt(jumlahCek));
+
+                    int nres = db.update(TABLE_ORDER, cv, ORDER_KODE +"='"+itemId+"'", null);
+                    if(nres >0) callback.onSuccess();
+                    else callback.onError();
+                }
+            } else {
+                Log.d("INSERTEPC", "in database ADD MODE" + itemId);
+                ContentValues cv = new ContentValues();
+                cv.put(ORDER_JUMLAHCEK, "1");
+                cv.put(ORDER_SELISIH, "-1");
+                cv.put(ORDER_JUMLAHDATA, "0");
+                cv.put(ORDER_WAREHOUSE, "1");
+                cv.put(ORDER_PERIOD, "");
+                cv.put(ORDER_GROUP,"");
+                cv.put(ORDER_TGL, "");
+                cv.put(ORDER_KODE, itemId);
+                cv.put(ORDER_DESKRIPSI, itemId);
+                cv.put(ORDER_CATATAN,"");
+
+                long nres = db.insert(TABLE_ORDER, null, cv);
+                if(nres > 0) callback.onSuccess();
+                else callback.onError();
+            }
+
+            cursor2.close();
+            ContentValues cv = new ContentValues();
+            cv.put(TEMP_KODE, itemId);
+            long nres = db.insert(TABLE_TEMP, null, cv);
+        }
+
+        cursor.close();
+    }
+
+    public boolean isEPCAvailableInTempAndInsert(String itemId) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_TEMP,null, TEMP_KODE + "='"+ itemId +"'",null, null, null, null);
+
+        if(cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            ContentValues cv = new ContentValues();
+            cv.put(TEMP_KODE, itemId);
+            long nres = db.insert(TABLE_TEMP, null, cv);
+            return false;
+        }
+
+    }
 }

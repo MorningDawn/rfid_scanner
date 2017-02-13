@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:1:1-176:12
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:1:1-157:12
 	package
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:2:5-45
 		INJECTED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml
@@ -18,11 +18,17 @@ ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidMa
 uses-sdk
 ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:6:5-8:41
 MERGED from [com.android.support:design:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:support-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/AndroidManifest.xml:5:5-43
+MERGED from [com.github.nisrulz:qreader:2.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/AndroidManifest.xml:22:5-24:41
+MERGED from [com.google.android.gms:play-services-vision:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.0.1/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-base:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:17:5-42
+MERGED from [xyz.danoz:recyclerviewfastscroller:0.1.3] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/xyz.danoz/recyclerviewfastscroller/0.1.3/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:recyclerview-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:24.0.0] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -30,7 +36,7 @@ MERGED from [com.android.support:recyclerview-v7:23.2.1] /home/roka/Project/rfid
 		INJECTED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml
 		INJECTED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:7:9-34
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:7:9-35
 		INJECTED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml
 		INJECTED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.READ_LOGS
@@ -43,6 +49,7 @@ ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidMa
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:11:22-65
 uses-permission#android.permission.CAMERA
 ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:12:5-13:23
+MERGED from [com.github.nisrulz:qreader:2.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/AndroidManifest.xml:27:5-65
 	android:name
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:12:22-62
 uses-feature#android.hardware.camera
@@ -98,12 +105,17 @@ ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidMa
 	android:name
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:41:22-77
 application
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:43:5-172:19
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:43:5-153:19
 MERGED from [com.android.support:design:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.2.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.github.nisrulz:qreader:2.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/AndroidManifest.xml:29:5-35:19
+MERGED from [com.google.android.gms:play-services-vision:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.0.1/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-base:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:24.0.0] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:46:9-41
 	android:allowBackup
@@ -160,83 +172,63 @@ activity#com.clouiotech.pda.demo.uhf.StokReadEPCActivity
 ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:90:9-92:20
 	android:name
 		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:91:13-75
-activity#com.clouiotech.pda.demo.uhf.DownloadActivity
+activity#com.clouiotech.pda.demo.Activity.QRCodeReaderActivity
 ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:93:9-95:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:94:13-72
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:94:13-81
+activity#com.clouiotech.pda.demo.uhf.DownloadActivity
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:96:9-98:20
+	android:name
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:97:13-72
 activity#com.clouiotech.pda.demo.uhf.DetailHistoryActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:96:9-86
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:99:9-86
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:96:19-83
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:99:19-83
 activity#com.clouiotech.pda.demo.uhf.HistoryActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:97:9-89
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:100:9-89
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:97:19-77
-activity#com.clouiotech.pda.demo.uhf.WriteEPCActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:99:9-100:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:99:19-78
-activity#com.clouiotech.pda.demo.uhf.LockEPCActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:101:9-102:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:101:19-77
-activity#com.clouiotech.pda.demo.uhf.ConfigActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:103:9-113:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:103:19-76
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:100:19-77
 activity#com.clouiotech.pda.demo.hf.HFMain
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:114:9-125:20
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:111:9-122:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:114:19-67
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:111:19-67
 activity#com.clouiotech.pda.demo.hf.ReadISO15693Activity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:126:9-127:20
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:123:9-134:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:126:19-81
-activity#com.clouiotech.pda.demo.hf.ReadISO14443Activity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:128:9-129:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:128:19-81
-activity#com.clouiotech.pda.demo.hf.ReadMifareActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:130:9-131:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:130:19-79
-activity#com.clouiotech.pda.demo.UpdateBase
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:132:9-133:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:132:19-68
-activity#com.clouiotech.pda.demo.Test_PowerUpDownActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:134:9-145:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:134:19-82
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:123:19-81
 activity#com.clouiotech.pda.demo.scanner.ScannerActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:146:9-157:20
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:135:9-146:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:146:19-81
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:135:19-81
 activity#com.clouiotech.pda.demo.psam.PsamTestActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:158:9-159:20
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:147:9-148:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:158:19-79
-activity#com.clouiotech.pda.demo.scanner.SDLguiActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:160:9-161:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:160:19-80
-activity#com.clouiotech.pda.demo.uhf.ReadEPCmatchingActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:162:9-163:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:162:19-85
-activity#com.clouiotech.pda.demo.dlt.Free433Sendctivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:164:9-165:20
-	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:164:19-80
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:147:19-79
 activity#com.clouiotech.pda.demo.dlt.MenuActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:166:9-167:20
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:149:9-150:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:166:19-74
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:149:19-74
 activity#com.clouiotech.pda.demo.dlt.MeterReadActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:168:9-169:20
+ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:151:9-152:20
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:168:19-79
-activity#com.clouiotech.pda.demo.dlt.MeterSettingActivity
-ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:170:9-171:20
+		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:151:19-79
+meta-data#com.google.android.gms.vision.DEPENDENCIES
+ADDED from [com.github.nisrulz:qreader:2.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/AndroidManifest.xml:32:9-34:39
+	android:value
+		ADDED from [com.github.nisrulz:qreader:2.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/AndroidManifest.xml:34:13-36
 	android:name
-		ADDED from /home/roka/Project/rfid_scanner/Android Studio/app/src/main/AndroidManifest.xml:170:19-82
+		ADDED from [com.github.nisrulz:qreader:2.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.github.nisrulz/qreader/2.0.1/AndroidManifest.xml:33:13-70
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /home/roka/Project/rfid_scanner/Android Studio/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:20:20-65

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
@@ -9,8 +9,40 @@
         android:id="@+id/rv_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical">
+        android:scrollbars="none"
+        android:visibility="gone">
 
     </android.support.v7.widget.RecyclerView>
+    
+    <xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller
+        android:id="@+id/rvfs_fast_scroller"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"/>
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ll_search_not_found"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/iv_search_icon"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_search_black_48dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_below="@+id/iv_search_icon"
+            android:text="Search Not Found"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

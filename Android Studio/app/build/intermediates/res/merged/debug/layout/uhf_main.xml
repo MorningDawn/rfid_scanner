@@ -20,7 +20,7 @@
 	    
 	</LinearLayout>
 
-    <Button
+	<Button
         android:layout_marginTop="2dp"
         android:id="@+id/btn_Main_Stok"
         android:layout_width="fill_parent"

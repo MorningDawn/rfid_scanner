@@ -4,7 +4,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.READ_LOGS" />
@@ -91,16 +91,14 @@
             android:name="com.clouiotech.pda.demo.uhf.StokReadEPCActivity" >
         </activity>
         <activity
+            android:name="com.clouiotech.pda.demo.Activity.QRCodeReaderActivity">
+        </activity>
+        <activity
             android:name="com.clouiotech.pda.demo.uhf.DownloadActivity" >
         </activity>
         <activity android:name="com.clouiotech.pda.demo.uhf.DetailHistoryActivity" />
         <activity android:name="com.clouiotech.pda.demo.uhf.HistoryActivity"></activity>
-        
-        <activity android:name="com.clouiotech.pda.demo.uhf.WriteEPCActivity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.uhf.LockEPCActivity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.uhf.ConfigActivity" >
+
             <!--
             <intent-filter>
                <action android:name="android.intent.action.MAIN" />
@@ -110,7 +108,6 @@
 
 
             -->
-        </activity>
         <activity android:name="com.clouiotech.pda.demo.hf.HFMain" >
 
             <!--
@@ -124,14 +121,6 @@
             -->
         </activity>
         <activity android:name="com.clouiotech.pda.demo.hf.ReadISO15693Activity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.hf.ReadISO14443Activity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.hf.ReadMifareActivity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.UpdateBase" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.Test_PowerUpDownActivity" >
 
             <!--
             <intent-filter>
@@ -157,17 +146,9 @@
         </activity>
         <activity android:name="com.clouiotech.pda.demo.psam.PsamTestActivity" >
         </activity>
-        <activity android:name="com.clouiotech.pda.demo.scanner.SDLguiActivity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.uhf.ReadEPCmatchingActivity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.dlt.Free433Sendctivity" >
-        </activity>
         <activity android:name="com.clouiotech.pda.demo.dlt.MenuActivity" >
         </activity>
         <activity android:name="com.clouiotech.pda.demo.dlt.MeterReadActivity" >
-        </activity>
-        <activity android:name="com.clouiotech.pda.demo.dlt.MeterSettingActivity" >
         </activity>
     </application>
 

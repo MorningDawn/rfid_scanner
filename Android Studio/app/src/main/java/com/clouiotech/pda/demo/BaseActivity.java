@@ -10,6 +10,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
 import com.clouiotech.pda.demoExample.R;
@@ -18,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressLint("HandlerLeak")
-public class BaseActivity extends Activity {
+public class BaseActivity extends ActionBarActivity {
 	private Toast _MyToast = null;
 
 	protected static final int MSG_SHOW_WAIT = 1;

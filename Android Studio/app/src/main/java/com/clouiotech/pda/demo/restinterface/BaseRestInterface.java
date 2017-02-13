@@ -4,6 +4,7 @@ import com.clouiotech.pda.demo.BaseObject.ItemResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 
 /**
@@ -11,5 +12,5 @@ import retrofit2.http.GET;
  */
 public interface BaseRestInterface {
     @GET("tryjson")
-    Call<ItemResponse> getTryJson();
+    Call<ItemResponse> getTryJson(@Query("operation") int operation);
 }
