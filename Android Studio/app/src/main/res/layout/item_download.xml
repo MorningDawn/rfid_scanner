@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_layout"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:weightSum="10"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_query_alias"
+                android:text="EPC ID"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/text_primary"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_query_real"
+                android:layout_marginTop="4dp"
+                android:text="EPC Description Lorem Ipsum Dolor Sit Amet Imeset Akha Mamir"
+                android:layout_below="@+id/tv_query_alias"
+                android:textColor="@color/text_secondary"
+                android:ellipsize="end"
+                android:textSize="10dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/v_card"
+        android:layout_below="@+id/ll_layout"
+        android:background="@color/divider"/>
+
+</RelativeLayout>
+

@@ -20,6 +20,7 @@ import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.ActionBarActivity;
 
 import com.clouiotech.pda.demo.BaseObject.GlobalVariable;
+import com.clouiotech.pda.demo.Fragment.DownloadFragment;
 import com.clouiotech.pda.demo.Fragment.ScanHistoryFragment;
 import com.clouiotech.pda.demo.Fragment.StockScanFragment;
 import com.clouiotech.pda.demo.PublicData;
@@ -106,8 +107,10 @@ public class RecyclerViewActivity extends UHFBaseActivity implements View.OnClic
         mDBHandler = new MyDBHandler(this, null, null, 1);
         mQrCodeListener = new QrCodeDetectImplementation();
 
+        mFabSwitch.setVisibility(View.GONE);
         switch (toFragment) {
             case GlobalVariable.PAGE_TO_STOCK_SCAN_FRAGMENT :
+                mFabSwitch.setVisibility(View.VISIBLE);
                 getSupportActionBar().setTitle(getResources().getString(R.string.fragment_stock_scan));
                 StockScanFragment stockScanFragment = StockScanFragment.newInstance();
                 mFragment = stockScanFragment;
@@ -120,6 +123,13 @@ public class RecyclerViewActivity extends UHFBaseActivity implements View.OnClic
                 ScanHistoryFragment scanHistoryFragment = ScanHistoryFragment.newInstance();
                 mFragment = scanHistoryFragment;
                 fr.replace(R.id.ll_activity, scanHistoryFragment);
+                break;
+
+            case GlobalVariable.PAGE_TO_DOWNLOAD_FRAGMENT:
+                getSupportActionBar().setTitle("Download Custom Query");
+                DownloadFragment downloadFragment = DownloadFragment.newInstance();
+                mFragment = downloadFragment;
+                fr.replace(R.id.ll_activity, downloadFragment);
                 break;
 
             default :
@@ -264,10 +274,12 @@ public class RecyclerViewActivity extends UHFBaseActivity implements View.OnClic
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_recycler_view, menu);
-        menu.findItem(R.id.menu_search).setVisible(true);
+        if(mFragment instanceof StockScanFragment) {
+            getMenuInflater().inflate(R.menu.menu_recycler_view, menu);
+            menu.findItem(R.id.menu_search).setVisible(true);
 
-        initActionBarSearchView(menu);
+            initActionBarSearchView(menu);
+        }
 
         return true;
     }

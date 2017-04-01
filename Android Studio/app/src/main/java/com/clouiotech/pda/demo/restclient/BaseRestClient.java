@@ -1,5 +1,7 @@
 package com.clouiotech.pda.demo.restclient;
 
+import com.clouiotech.pda.demo.BaseObject.ItemResponse;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

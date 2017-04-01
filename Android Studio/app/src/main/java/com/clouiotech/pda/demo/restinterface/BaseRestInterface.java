@@ -1,5 +1,6 @@
 package com.clouiotech.pda.demo.restinterface;
 
+import com.clouiotech.pda.demo.BaseObject.CustomQueryResponse;
 import com.clouiotech.pda.demo.BaseObject.ItemResponse;
 
 import retrofit2.Call;
@@ -13,4 +14,7 @@ import retrofit2.http.Query;
 public interface BaseRestInterface {
     @GET("tryjson")
     Call<ItemResponse> getTryJson(@Query("operation") int operation);
+
+    @GET("getallcustomquery")
+    Call<CustomQueryResponse> getAllCustomQuery();
 }

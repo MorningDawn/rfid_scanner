@@ -13,7 +13,7 @@
         android:visibility="gone">
 
     </android.support.v7.widget.RecyclerView>
-    
+
     <xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller
         android:id="@+id/rvfs_fast_scroller"
         android:layout_width="15dp"

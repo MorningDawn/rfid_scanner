@@ -6,16 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.Preference;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,20 +23,13 @@ import android.widget.Toast;
 import com.clouiotech.pda.demo.BaseObject.GlobalVariable;
 import com.clouiotech.pda.demo.BaseObject.Item;
 import com.clouiotech.pda.demo.BaseObject.ItemResponse;
-import com.clouiotech.pda.demo.Sqlite.DataAsli;
-import com.clouiotech.pda.demo.Sqlite.DataOrder;
 import com.clouiotech.pda.demo.Sqlite.MyDBHandler;
 import com.clouiotech.pda.demo.restclient.BaseRestClient;
 import com.clouiotech.pda.demo.restinterface.BaseRestInterface;
 import com.clouiotech.pda.demoExample.R;
-import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -121,7 +108,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } break;
 
             case R.id.ll_download : {
-                showDownloadURLAlertDialog();
+                Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                intent.putExtra(GlobalVariable.INTENT_EXTRA_PAGE, GlobalVariable.PAGE_TO_DOWNLOAD_FRAGMENT);
+                startActivity(intent);
             } break;
 
             case R.id.ll_scan : {

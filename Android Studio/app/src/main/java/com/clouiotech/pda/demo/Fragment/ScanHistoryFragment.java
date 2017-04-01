@@ -16,6 +16,8 @@ import com.clouiotech.pda.demoExample.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
+
 /**
  * Created by roka on 30/07/16.
  */
@@ -24,6 +26,7 @@ public class ScanHistoryFragment extends Fragment {
     private ScanHistoryAdapter mAdapter;
     private LinearLayoutManager mManager;
     private RecyclerView mRvRecycler;
+    private VerticalRecyclerViewFastScroller mScroller = null;
 
     public static ScanHistoryFragment newInstance() {
         ScanHistoryFragment fragment = new ScanHistoryFragment();
@@ -44,9 +47,13 @@ public class ScanHistoryFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_recycler_view, null, false);
 
         mRvRecycler = (RecyclerView) v.findViewById(R.id.rv_recycler);
+        mScroller = (VerticalRecyclerViewFastScroller) v.findViewById(R.id.rvfs_fast_scroller);
 
         mRvRecycler.setLayoutManager(mManager);
         mRvRecycler.setAdapter(mAdapter);
+
+        mScroller.setVisibility(View.GONE);
+        mScroller.setRecyclerView(mRvRecycler);
 
         for (int i = 0; i < 300; i++) {
             ScanHistoryObject scanHistoryObject = new ScanHistoryObject("Scan Code "+i, "Scan Number "+i, "1 Januari 1990");
